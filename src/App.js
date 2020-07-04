@@ -1,17 +1,15 @@
 import React from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
+
+// Stylesheets
 import './App.scss';
-import TopNavigation from './top-navigation/top-navigation';
-import Landing from './landing/landing';
 
 function App() {
-  return (
-    <Router>
-      <div>
-        <TopNavigation></TopNavigation>
-        <Landing></Landing>
+  return(
+    <div className="home">
+      <div className="home-content">
+        <h1>Front-end Developer</h1>
       </div>
-    </Router>
+    </div>
   );
 }
 

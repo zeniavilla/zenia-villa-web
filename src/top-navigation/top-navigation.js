@@ -11,34 +11,38 @@ import gitHubLogo from '../images/github-logo.png';
 
 function TopNavigation() {
   return (
-    <header class="top-nav-wrap">
+    <header className="top-nav-wrap">
       {/* <nav className="top-nav"> */}
-        <Link to="/">
-          <img src={zvLogo} className="zv-logo" title="Zenia Villa logo"></img>
-        </Link>
-        <ul className="top-nav-links">
-          <li className="top-nav-item">
-            <Link to="/about-me">About Me</Link>
-          </li>
-          <li className="top-nav-item">
-            <Link to="/contact">Contact</Link>
-          </li>
-        </ul>
-        <ul className="top-nav-social">
-          <li className="top-nav-item">
-            <a href="https://www.linkedin.com/in/zeniavilla" target="_blank">
-              <img src={linkedInLogo} className="social-logo" title="LinkedIn Logo" />
-            </a>
-          </li>
-          <li className="top-nav-item">
-            <a href="https://github.com/zeniavilla" target="_blank">
-              <img src={gitHubLogo} className="social-logo" title="GitHub Logo" />
-            </a>
-          </li>
-        </ul>
+      <Link to="/">
+        <img src={zvLogo} className="zv-logo" title="Zenia Villa logo" alt="logo"></img>
+      </Link>
+      <ul className="top-nav-links">
+        <li className="top-nav-item">
+          <Link to="/about-me">About Me</Link>
+        </li>
+        <li className="top-nav-item">
+          <Link to="/contact">Contact</Link>
+        </li>
+      </ul>
+      <ul className="top-nav-social">
+        <li className="top-nav-item">
+          <a href="https://www.linkedin.com/in/zeniavilla" target="_blank" rel="noreferrer">
+            <img
+              src={linkedInLogo}
+              className="social-logo"
+              title="LinkedIn Logo" alt="linkedIn-logo"
+            />
+          </a>
+        </li>
+        <li className="top-nav-item">
+          <a href="https://github.com/zeniavilla" target="_blank" rel="noreferrer">
+            <img src={gitHubLogo} className="social-logo" title="GitHub Logo" alt="gitHub-logo" />
+          </a>
+        </li>
+      </ul>
       {/* </nav> */}
     </header>
-  )
+  );
 }
 
 export default TopNavigation;

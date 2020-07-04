@@ -1,11 +1,21 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import * as serviceWorker from './serviceWorker';
-import App from './App';
+import React from "react";
+import ReactDOM from "react-dom";
+import { Route, BrowserRouter as Router } from 'react-router-dom';
 
-// Stylesheets
-import './index.scss';
+// Components
+import App from "./App";
+import About from './about/about';
+import TopNavigation from './top-navigation/top-navigation';
+import Contact from './contact/contact';
 
-ReactDOM.render(<App />, document.getElementById('root'));
-
-serviceWorker.unregister();
+const routing = (
+  <Router>
+    <div>
+      <TopNavigation></TopNavigation>
+      <Route exact path="/" component={App}></Route>
+      <Route path="/about-me" component={About}></Route>
+      <Route path="/contact" component={Contact}></Route>
+    </div>
+  </Router>
+)
+ReactDOM.render(routing, document.getElementById("root"));
