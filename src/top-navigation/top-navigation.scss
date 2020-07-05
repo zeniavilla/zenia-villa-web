@@ -3,12 +3,12 @@
 .top-nav-wrap {
   height: 60px;
   margin: auto;
-  z-index: 12; 
+  z-index: 12;
   display: flex;
   align-items: center;
   margin: 0 auto;
   padding: 10px 10%;
-  
+
   .zv-logo {
     height: 38px;
   }
@@ -35,7 +35,8 @@
     }
   }
 
-  .top-nav-links, .top-nav-social {
+  .top-nav-links,
+  .top-nav-social {
     list-style: none;
 
     .top-nav-item {
@@ -43,16 +44,23 @@
 
       a {
         text-decoration: none;
-        color: $color-2;
+        color: $color-dark-gray;
         position: relative;
 
-        &:hover::after {
+        &::after {
+          width: 0%;
           content: '';
           position: absolute;
           left: 0;
           right: 0;
           bottom: -10px;
-          border: 1px solid $color-1;
+          border: 1px double $color-orange;
+        }
+
+        &:hover::after {
+          width: 100%;
+          animation: fill 1s forwards;
+          transition: width 1s ease-in-out;
         }
       }
     }
