@@ -60,7 +60,7 @@
         &:hover::after {
           width: 100%;
           animation: fill 1s forwards;
-          transition: width 1s ease-in-out;
+          transition: width 500ms ease-in-out;
         }
       }
     }

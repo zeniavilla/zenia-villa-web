@@ -6,7 +6,6 @@ import { Route, BrowserRouter as Router } from 'react-router-dom';
 import App from "./App";
 import About from './about/about';
 import TopNavigation from './top-navigation/top-navigation';
-import Breadcrumb from './breadcrumb/breadcrumb';
 import Contact from './contact/contact';
 
 const routing = (

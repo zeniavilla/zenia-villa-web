@@ -3,6 +3,8 @@
 .breadcrumb-wrapper {
   font-size: 2rem;
   margin-bottom: 40px;
+  margin-left: auto;
+  margin-right: auto;
 
   &.breadcrumb-green {
     background: linear-gradient(
@@ -17,6 +19,14 @@
       180deg,
       rgba(255, 255, 255, 0) 65%,
       $color-blue 65%
+    );
+  }
+
+  &.breadcrumb-purple {
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0) 65%,
+      $color-purple 65%
     );
   }
 }

@@ -12,7 +12,6 @@ import gitHubLogo from '../images/github-logo.png';
 function TopNavigation() {
   return (
     <header className="top-nav-wrap">
-      {/* <nav className="top-nav"> */}
       <Link to="/">
         <img src={zvLogo} className="zv-logo" title="Zenia Villa logo" alt="logo"></img>
       </Link>
@@ -40,7 +39,6 @@ function TopNavigation() {
           </a>
         </li>
       </ul>
-      {/* </nav> */}
     </header>
   );
 }

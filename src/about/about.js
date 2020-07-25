@@ -22,23 +22,12 @@ function About() {
             <h2 className="handwritten-text">Oh, hey</h2>
             <div className="paragraph-item">
               My name is Zenia (prounounced Zeen-yuh). I&apos;m a software
-              engineer at IBM Aspera, focusing on the frontend.
+              engineer at IBM Aspera, currently focusing on the frontend.
             </div>
             <div className="paragraph-item">
-              My original plan was a career in the fashion industry and my
-              artistic inclination led me to graphic design and event
-              production. Those were a few of my key roles when I worked in
-              Marketing for a few years after college. It was fine, but it
-              wasn&apos;t for me.
-            </div>
-            <div className="paragraph-item">
-              In 2017, I stopped working and started focusing on learning to
-              code full-time. It was self-imposed long hours, frustrating
-              debugging sessions, and many nights of dreaming about my code
-              (actually, I think that&apos;s what they call a nightmare). I
-              loved coding when I took my first Computer Science class in high
-              and once I started again, I knew I was on the right track. Later
-              that year, I got a job with IBM and have been there ever since.
+              I&apos;m an aspiring fashion designer turned Marketer turned
+              Developer. Web development has become my happy place and I&apos;m
+              always looking for the next challenge.
             </div>
           </div>
         </div>
@@ -55,14 +44,14 @@ function About() {
             </div>
           </div>
           <div className="box-item flex-item">
-            <h3>Eye-opening books</h3>
+            <h3>Some favorite books</h3>
             <div className="handwritten-text">
               A New Earth and The Charisma Myth
             </div>
-            <h3>On weekends I will be</h3>
+            <h3>On weekends, you&apos;ll find me</h3>
             <div className="handwritten-text">
-              Rock climbing, hiking, at a brewery with friends, having board
-              game gatherings
+              Rock climbing, trail running, drinking hoppy beers at a brewery
+              with friends, having board game gatherings
             </div>
           </div>
         </div>
