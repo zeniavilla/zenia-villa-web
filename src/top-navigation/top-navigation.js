@@ -1,45 +1,65 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { AppBar, Toolbar, Button, Typography } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+import LinkedInIcon from '@material-ui/icons/LinkedIn';
+import GitHubIcon from '@material-ui/icons/GitHub';
 
-// Stylesheets
-import './top-navigation.scss';
+const useStyles = makeStyles((theme) => ({
+  appBar: {
+    background: '#fcf4f4',
+  },
+  grow: {
+    flexGrow: 1,
+  },
+  title: {
+    flexGrow: 1,
+  },
+  pageLinks: {
+    position: 'relative',
+    marginRight: theme.spacing(2),
+    marginLeft: 0,
+    width: '100%',
+    [theme.breakpoints.up('sm')]: {
+      marginLeft: theme.spacing(3),
+      width: 'auto',
+    },
+  },
+  socialLinks: {
+    marginLeft: 0,
+    position: 'relative',
+  },
+}));
 
-// Images
-import zvLogo from '../zv-logo.png';
-import linkedInLogo from '../images/linkedin-logo.png';
-import gitHubLogo from '../images/github-logo.png';
+const navLinks = [
+  { title: 'About me', path: '#about' },
+  { title: 'Contact', path: '#contact' },
+];
 
 function TopNavigation() {
+  const classes = useStyles();
   return (
-    <header className="top-nav-wrap">
-      <Link to="/">
-        <img src={zvLogo} className="zv-logo" title="Zenia Villa logo" alt="logo"></img>
-      </Link>
-      <ul className="top-nav-links">
-        <li className="top-nav-item">
-          <Link to="/about-me">About Me</Link>
-        </li>
-        <li className="top-nav-item">
-          <Link to="/contact">Contact</Link>
-        </li>
-      </ul>
-      <ul className="top-nav-social">
-        <li className="top-nav-item">
-          <a href="https://www.linkedin.com/in/zeniavilla" target="_blank" rel="noreferrer">
-            <img
-              src={linkedInLogo}
-              className="social-logo"
-              title="LinkedIn Logo" alt="linkedIn-logo"
-            />
-          </a>
-        </li>
-        <li className="top-nav-item">
-          <a href="https://github.com/zeniavilla" target="_blank" rel="noreferrer">
-            <img src={gitHubLogo} className="social-logo" title="GitHub Logo" alt="gitHub-logo" />
-          </a>
-        </li>
-      </ul>
-    </header>
+    <div className={classes.grow}>
+      <AppBar className={classes.appBar} position="fixed">
+        <Toolbar>
+          <Button href="/">
+            <Typography variant="h5" className={classes.title} color="textSecondary">Zenia Villa</Typography>
+          </Button>
+          {navLinks.map((link) => (
+            <Button key={link} href={link.path}>{link.title}</Button>
+          ))}
+          <div className={classes.grow} />
+          <div className={classes.socialLinks}>
+            <Button href="https://www.linkedin.com/in/zeniavilla" target="blank">
+              <LinkedInIcon />
+            </Button>
+            <Button href="https://github.com/zeniavilla" target="blank">
+              <GitHubIcon />
+            </Button>
+          </div>
+        </Toolbar>
+      </AppBar>
+      <Toolbar />
+    </div>
   );
 }
 
