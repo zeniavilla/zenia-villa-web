@@ -2,13 +2,13 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 // Components
-import About from './about/about';
-import Home from './home/home';
-import TopNavigation from './top-navigation/top-navigation';
-import Contact from './contact/contact';
-import Footer from "./footer/footer";
+import About from './components/about/about';
+import Home from './components/home/home';
+import TopNavigation from './components/top-navigation/top-navigation';
+import Contact from './components/contact/contact';
+import Footer from "./components/footer/footer";
 
-import './index.scss';
+import './styles/global.scss';
 import { Toolbar } from "@material-ui/core";
 
 const routing = (
