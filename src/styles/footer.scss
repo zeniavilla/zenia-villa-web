@@ -1,0 +1,16 @@
+.footer-container {
+  width: 100%;
+  bottom: auto;
+  left: 0;
+  background-color: #dadada;
+
+  .content-wrapper {
+    padding: 20px;
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      margin-top: 10px;
+    }
+  }
+}

@@ -1,0 +1,18 @@
+.section-heading {
+  margin-bottom: 30px;
+
+  .section-title {
+    position: relative;
+    font-weight: 600;
+    padding-top: 20px;
+
+    &::before {
+      content: '';
+      position: absolute;
+      width: 30px;
+      height: 0;
+      top: 0;
+      border-bottom: 2px solid #000;
+    }
+  }
+}
