@@ -1,12 +1,12 @@
 import React from 'react';
-import { AppBar, Toolbar, Button, Typography, IconButton, Drawer, List, ListItemText, ListItem } from '@material-ui/core';
+import {AppBar, Toolbar, Button, Typography, IconButton, Drawer, List, ListItemText, ListItem} from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import CloseIcon from '@material-ui/icons/Close';
 import '../../styles/top-navigation.scss';
 
 const navLinks = [
-  { title: 'About me', path: '#about' },
-  { title: 'Contact', path: '#contact' },
+  {title: 'About me', path: '#about'},
+  {title: 'Contact', path: '#contact'},
 ];
 
 function TopNavigation() {
@@ -15,7 +15,7 @@ function TopNavigation() {
   });
   
   const toggleDrawer = (open) => {
-    setState({ ...state, drawerOpen: open });
+    setState({...state, drawerOpen: open});
   };
 
   return (

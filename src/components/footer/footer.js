@@ -1,4 +1,4 @@
-import { Button, Typography } from '@material-ui/core';
+import {Button, Typography} from '@material-ui/core';
 import React from 'react';
 import '../../styles/footer.scss';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';

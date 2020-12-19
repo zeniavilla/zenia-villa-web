@@ -1,4 +1,4 @@
-import { Container, Paper } from '@material-ui/core';
+import {Container, Paper} from '@material-ui/core';
 import React from 'react';
 import homeImage from '../../images/polaroid.jpeg';
 import SectionTitle from '../section-title/section-title';
