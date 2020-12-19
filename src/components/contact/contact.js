@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Container, TextField, Checkbox, FormControlLabel, Typography } from '@material-ui/core';
+import {Button, Container, TextField, Checkbox, FormControlLabel, Typography} from '@material-ui/core';
 import SectionTitle from '../section-title/section-title';
 import '../../styles/contact.scss';
 import DoneAllIcon from '@material-ui/icons/DoneAll';

@@ -1,4 +1,4 @@
-import { Container, Grid, Paper, Typography } from '@material-ui/core';
+import {Container, Grid, Paper, Typography} from '@material-ui/core';
 import React from 'react';
 import headshot from '../../images/zv-headshot.jpg';
 import SectionTitle from '../section-title/section-title';

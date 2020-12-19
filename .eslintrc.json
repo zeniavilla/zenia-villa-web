@@ -10,7 +10,9 @@
   "rules": {
     "react/prop-types": 0,
     "no-console": 1,
-    "eol-last": "warn"
+    "eol-last": "warn",
+    "object-curly-spacing": "error",
+    "space-in-parens": "off"
   },
   "plugins": ["react", "import", "jsx-a11y"],
   "parserOptions": {

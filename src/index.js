@@ -9,7 +9,7 @@ import Contact from './components/contact/contact';
 import Footer from "./components/footer/footer";
 
 import './styles/global.scss';
-import { Toolbar } from "@material-ui/core";
+import {Toolbar} from "@material-ui/core";
 
 const routing = (
   <div>
