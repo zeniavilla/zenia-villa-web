@@ -5,8 +5,8 @@ import CloseIcon from '@material-ui/icons/Close';
 import '../../styles/top-navigation.scss';
 
 const navLinks = [
-  {title: 'About me', path: '#about'},
-  {title: 'Contact', path: '#contact'},
+  {title: 'About me', path: '/about'},
+  {title: 'Contact', path: '/contact'},
 ];
 
 function TopNavigation() {
@@ -23,8 +23,9 @@ function TopNavigation() {
       <AppBar className="top-navigation" position="fixed">
         <Toolbar>
           <Button href="/">
-            <Typography variant="h5" color="textPrimary">Zenia Villa</Typography>
+            <Typography className="zv-title" variant="h5" color="textPrimary">Zenia Villa</Typography>
           </Button>
+          <Typography variant="subtitle2" color="textPrimary">/ Front-end Developer</Typography>
           <div className="menu-container">
             <IconButton className="drawer-icon" edge="end" aria-label="menu" onClick={() => toggleDrawer(true)}>
               <MenuIcon />

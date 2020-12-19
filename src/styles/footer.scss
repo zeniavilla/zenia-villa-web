@@ -1,16 +1,17 @@
 .footer-container {
+  height: 90px;
   width: 100%;
-  bottom: auto;
   left: 0;
+  bottom: 0;
+  position: absolute;
   background-color: #dadada;
 
   .content-wrapper {
-    padding: 20px;
+    padding-top: 15px;
 
     .social-links {
       display: flex;
       justify-content: center;
-      margin-top: 10px;
     }
   }
 }
