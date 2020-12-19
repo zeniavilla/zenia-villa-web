@@ -1,8 +1,8 @@
 import React from 'react';
 import { AppBar, Toolbar, Button, Typography, IconButton, Drawer, List, ListItemText, ListItem } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
+import CloseIcon from '@material-ui/icons/Close';
 import '../../styles/top-navigation.scss';
-
 
 const navLinks = [
   { title: 'About me', path: '#about' },
@@ -30,10 +30,15 @@ function TopNavigation() {
               <MenuIcon />
             </IconButton>
           </div>
-          <Drawer open={state.drawerOpen}  onClose={() => toggleDrawer(false)} anchor="right">
+          <Drawer className="nav-drawer" open={state.drawerOpen}  onClose={() => toggleDrawer(false)} anchor="right">
             <List className="drawer-list">
+              <ListItem className="close-button" onClick={() => toggleDrawer(false)}>
+                <IconButton>
+                  <CloseIcon />
+                </IconButton>
+              </ListItem>
               {navLinks.map((link) => (
-                <ListItem button key={link.title} component="a" href={link.path}>
+                <ListItem button key={link.title} component="a" href={link.path} onClick={() => toggleDrawer(false)}>
                   <ListItemText primary={link.title} />
                 </ListItem>
               ))}
