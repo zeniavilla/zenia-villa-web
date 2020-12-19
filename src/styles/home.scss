@@ -1,12 +1,14 @@
 .home-container {
   margin-bottom: 100px;
 
-  .image-container {
-    overflow: 'hidden';
-    background-color: 'transparent';
+  .home-image {
+    height: 600px;
+    opacity: .4;
+    transition: opacity 2s;
 
-    .home-image {
-      width: 100%;
+    &:hover {
+      opacity: 1;
+      transition-duration: 2s;
     }
   }
 }

@@ -1,6 +1,6 @@
-import {Container, Grid, Paper, Typography} from '@material-ui/core';
+import {CardMedia, Container, Grid, Typography} from '@material-ui/core';
 import React from 'react';
-import headshot from '../../images/zv-headshot.jpg';
+import zv from '../../images/pollinate-presentation.webp'
 import SectionTitle from '../section-title/section-title';
 import '../../styles/about.scss';
 
@@ -8,15 +8,9 @@ function About() {
   return (
     <Container id="about" maxWidth="md" className="about-container">
       <SectionTitle title="About me" />
-      <Grid container spacing={3}>
+      <Grid container spacing={10}>
         <Grid item xs={12} sm={12} lg={6}>
-          <Paper className="about-image" elevation={0}>
-            <img
-              src={headshot}
-              alt="Zenia Villa"
-              title="Zenia Villa image"
-            ></img>
-          </Paper>
+          <CardMedia className="about-image" image={zv} />
         </Grid>
         <Grid item xs={12} sm={12} lg={6}>
           <Typography variant="h4">Oh, hey</Typography>
