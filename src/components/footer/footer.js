@@ -8,7 +8,7 @@ function Footer() {
   return (
     <footer className="footer-container">
       <div className="content-wrapper">
-        <Typography align="center">© {new Date().getFullYear()} Zenia Villa | Made with React/Material UI</Typography>
+        <Typography align="center">© {new Date().getFullYear()} by Zenia Villa | Made with React/Material UI</Typography>
         <div className="social-links" aria-labelledby="social links">
           <IconButton href="https://www.linkedin.com/in/zeniavilla" target="blank">
             <LinkedInIcon fontSize="small" />

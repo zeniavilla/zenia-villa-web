@@ -6,6 +6,7 @@ import '../../styles/top-navigation.scss';
 
 const navLinks = [
   {title: 'About me', path: '/about'},
+  {title: 'Resume', path: '/resume'},
   {title: 'Contact', path: '/contact'},
 ];
 

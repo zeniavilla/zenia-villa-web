@@ -102,7 +102,7 @@ function Contact() {
             }
             label="Send me a copy"
           />
-          <Button className="submit-button"  type="submit" variant="contained">Submit</Button>
+          <Button className="submit-button"  type="submit" variant="contained" color="primary">Submit</Button>
         </form>
       }
     </Container>
