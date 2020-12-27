@@ -15,12 +15,22 @@
 }
 
 .nav-drawer .drawer-list {
-  width: 300px;
+  width: 86vw;
+  max-width: 400px;
   padding-right: 8px;
   padding-left: 8px;
   padding-top: 0;
 
   .close-button {
     justify-content: flex-end;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  @media only screen and (max-width: 380px) {
+    .close-button {
+      padding-left: 0;
+      padding-right: 0;
+    }
   }
 }

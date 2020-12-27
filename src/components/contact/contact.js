@@ -64,7 +64,7 @@ function Contact() {
 
   return (
     <Container id="contact" maxWidth="md" className="contact-container">
-      <SectionTitle title="Contact" subtitle="Feel free to email me sans a form at zavilla90@gmail.com." />
+      <SectionTitle title="Contact" subtitle="Feel free to email me sans a form:" link="mailto:zavilla@gmail.com" linkText="zavilla90@gmail.com" />
       {
         state.formSubmitted ?
         (
