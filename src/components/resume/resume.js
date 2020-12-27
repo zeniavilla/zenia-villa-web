@@ -36,7 +36,7 @@ function Resume() {
   return (
     <Container className="resume-container" maxWidth="md">
       <SectionTitle title="Resume" />
-      <Button className="download-button" a href={pdf} target="blank" variant="contained" color="primary">Download CV</Button>
+      <Button className="download-button" a="true" href={pdf} target="blank" variant="contained" color="primary">Download CV</Button>
       {resumeData.map(data => {
         return (
           <Card key={data.timeframe} className="experience-card">

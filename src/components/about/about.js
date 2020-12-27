@@ -8,11 +8,11 @@ function About() {
   return (
     <Container id="about" maxWidth="md" className="about-container">
       <SectionTitle title="About me" />
-      <Grid container spacing={10}>
-        <Grid item xs={12} sm={12} lg={6}>
+      <Grid container spacing={4}>
+        <Grid item xs={12} md={6}>
           <CardMedia className="about-image" image={zv} />
         </Grid>
-        <Grid item xs={12} sm={12} lg={6}>
+        <Grid item xs={12} md={6}>
           <Typography variant="h4">Oh, hey</Typography>
           <Typography variant="body1">
             My name is Zenia (prounounced Zeen-yuh). I&apos;m a software engineer at IBM Aspera, currently focusing on the frontend.
