@@ -1,4 +1,4 @@
-import {Typography} from '@material-ui/core';
+import {Typography, Link} from '@material-ui/core';
 import React from 'react';
 import '../../styles/section-title.scss';
 
@@ -14,7 +14,7 @@ function SectionTitle(props) {
       }
       {
         link ?
-        <a href={link}>{linkText}</a> :
+        <Link href={link} color="secondary">{linkText}</Link> :
         ''
       }
     </div>
