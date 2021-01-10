@@ -87,7 +87,9 @@ function Contact() {
                 value={state[element.field]}
                 multiline={element.multiline}
                 rows={element.multiline ? element.rows : undefined}
-                onChange={(e) => changeValue(e.target.value, element.field)} 
+                onChange={(e) => changeValue(e.target.value, element.field)}
+                color="primary"
+                InputProps={{className: 'form-text-field'}}
               />
             )
           })}

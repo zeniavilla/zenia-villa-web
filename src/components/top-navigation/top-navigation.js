@@ -26,8 +26,10 @@ function TopNavigation() {
           <Button href="/">
             <Typography className="zv-title" variant="h5" color="textPrimary">Zenia Villa</Typography>
           </Button>
-          <Hidden xsDown={true}>
-            <Typography variant="subtitle2" color="textPrimary">/ Front-end Developer</Typography>
+          <Hidden only="xs">
+            <Typography variant="h6" color="secondary">/</Typography>
+            &nbsp;
+            <Typography variant="subtitle2" color="textPrimary">Front-end Developer</Typography>
           </Hidden>
           <div className="menu-container">
             <IconButton className="drawer-icon" edge="end" aria-label="menu" onClick={() => toggleDrawer(true)}>
