@@ -7,6 +7,7 @@ import '../../styles/top-navigation.scss';
 const navLinks = [
   {title: 'About me', path: '/about'},
   {title: 'Resume', path: '/resume'},
+  {title: 'Projects', path: '/projects'},
   {title: 'Contact', path: '/contact'},
 ];
 
@@ -29,7 +30,7 @@ function TopNavigation() {
           <Hidden only="xs">
             <Typography variant="h6" color="secondary">/</Typography>
             &nbsp;
-            <Typography variant="subtitle2" color="textPrimary">Front-end Developer</Typography>
+            <Typography variant="subtitle2" color="textPrimary">Frontend Developer</Typography>
           </Hidden>
           <div className="menu-container">
             <IconButton className="drawer-icon" edge="end" aria-label="menu" onClick={() => toggleDrawer(true)}>
