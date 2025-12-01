@@ -1,9 +1,9 @@
-import SectionTitle from '../../section-title/section-title';
+import SectionTitle from '../../../components/section-title/section-title.tsx';
 import byok1 from '@/assets/images/byok1.webp';
 import byok2 from '@/assets/images/byok2.webp';
 import favorites from '@/assets/images/favorites.webp';
 import transfers from '@/assets/images/transfers.webp';
-import ProjectDetails from '../details/project';
+import ProjectDetails from '../details/project.tsx';
 
 function Projects() {
   return (

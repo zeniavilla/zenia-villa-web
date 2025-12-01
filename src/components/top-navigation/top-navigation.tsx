@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { Link } from 'react-router';
+import { Link, NavLink } from 'react-router';
+import { cn } from '@/lib/utils.ts';
 
 const navLinks = [
   { title: 'About me', path: '/about' },
@@ -8,7 +9,7 @@ const navLinks = [
   { title: 'Contact', path: '/contact' },
 ];
 
-function TopNavigation() {
+const MobileNav = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   return (
@@ -19,7 +20,7 @@ function TopNavigation() {
             <Link to="/" className="flex items-center gap-2 no-underline">
               <h1 className="text-2xl font-bold text-gray-900">Zenia Villa</h1>
               <span className="text-gray-400 hidden sm:inline">/</span>
-              <span className="text-sm text-gray-600 hidden sm:inline">Frontend Developer</span>
+              <span className="text-sm text-gray-600 hidden sm:inline">Frontend Product Engineer</span>
             </Link>
 
             <button
@@ -72,6 +73,36 @@ function TopNavigation() {
       )}
     </>
   );
+};
+
+const DesktopNav = () => {
+  return (
+    <div className="flex flex-row gap-8 pt-12 pb-8 pl-8 pr-8">
+      <div>ZV</div>
+      <div className="ml-auto"></div>
+      {
+        navLinks.map((link) => (
+          <NavLink
+            to={link.path}
+            key={link.title}
+            className={
+            ({isActive}) =>
+              cn(
+                "text-xl",
+                isActive ? "font-medium text-gray-800" : "font-light text-gray-500"
+              )
+            }
+          >
+            {link.title}
+          </NavLink>
+        ))
+      }
+    </div>
+  );
+};
+
+const TopNavigation = () => {
+  return <DesktopNav />;
 }
 
 export default TopNavigation;

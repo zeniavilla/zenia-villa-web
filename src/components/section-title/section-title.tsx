@@ -6,7 +6,13 @@ interface SectionTitleProps {
   linkText?: string;
 }
 
-function SectionTitle({ size = 'h4', title, subtitle, link, linkText }: SectionTitleProps) {
+function SectionTitle({
+  size = 'h3',
+  title,
+  subtitle,
+  link,
+  linkText
+}: SectionTitleProps) {
   const sizeClasses = {
     h1: 'text-5xl',
     h2: 'text-4xl',
@@ -16,13 +22,11 @@ function SectionTitle({ size = 'h4', title, subtitle, link, linkText }: SectionT
     h6: 'text-lg',
   };
 
-  const Tag = size as keyof JSX.IntrinsicElements;
-
   return (
     <div className="mb-6">
-      <Tag className={`${sizeClasses[size]} font-bold text-gray-900 mb-2`}>
+      <div className={`${sizeClasses[size]} font-medium text-gray-900 mb-2`}>
         {title}
-      </Tag>
+      </div>
       {subtitle && (
         <p className="text-base text-gray-600 mb-2">{subtitle}</p>
       )}

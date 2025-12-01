@@ -1,4 +1,4 @@
-import SectionTitle from '../section-title/section-title';
+import SectionTitle from '../../components/section-title/section-title.tsx';
 
 function Contact() {
   return (

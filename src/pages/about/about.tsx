@@ -1,5 +1,5 @@
 import zv from '@/assets/images/pollinate-presentation.webp';
-import SectionTitle from '../section-title/section-title';
+import SectionTitle from '../../components/section-title/section-title.tsx';
 
 function About() {
   return (
@@ -14,9 +14,9 @@ function About() {
           />
         </div>
         <div className="space-y-4">
-          <h2 className="text-3xl font-bold">Oh, hey</h2>
+          <h2 className="text-2xl font-medium">Oh, hey</h2>
           <p className="text-gray-700">
-            My name is Zenia (prounounced Zeen-yuh). I'm a software engineer at IBM Aspera, currently focusing on the frontend.
+            My name is Zenia (prounounced Zee-nee-uh). I'm a software engineer at IBM Aspera, currently focusing on the frontend.
             I'm a fashion designer turned Marketer turned
             Developer. Web development has become my happy place and I'm
             always looking for the next challenge.
