@@ -1,9 +1,8 @@
-import React from 'react';
 import SectionTitle from '../../section-title/section-title';
-import byok1 from '../../../images/byok1.webp';
-import byok2 from '../../../images/byok2.webp';
-import favorites from '../../../images/favorites.webp';
-import transfers from '../../../images/transfers.webp';
+import byok1 from '@/assets/images/byok1.webp';
+import byok2 from '@/assets/images/byok2.webp';
+import favorites from '@/assets/images/favorites.webp';
+import transfers from '@/assets/images/transfers.webp';
 import ProjectDetails from '../details/project';
 
 function Projects() {

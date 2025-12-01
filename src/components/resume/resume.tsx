@@ -1,6 +1,5 @@
-import React from 'react';
 import SectionTitle from '../section-title/section-title';
-import pdf from '../../docs/zv-resume.pdf';
+import pdf from '@/assets/docs/zv-resume.pdf';
 
 interface ResumeData {
   timeframe: string;

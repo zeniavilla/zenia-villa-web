@@ -1,5 +1,4 @@
-import React from 'react';
-import zv from '../../images/pollinate-presentation.webp';
+import zv from '@/assets/images/pollinate-presentation.webp';
 import SectionTitle from '../section-title/section-title';
 
 function About() {
