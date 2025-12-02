@@ -1,5 +1,8 @@
 import zv from '@/assets/images/pollinate-presentation.webp';
 import SectionTitle from '../../components/section-title/section-title.tsx';
+import GitHubIcon from '@/components/icons/GitHubIcon.tsx';
+import LinkedInIcon from '@/components/icons/LinkedInIcon.tsx';
+import { ArrowUpRight, Mail } from 'lucide-react';
 
 const ABOUT_CONTENT = {
   greeting: "Oh, hey",
@@ -16,19 +19,40 @@ const ABOUT_CONTENT = {
   imageAlt: "Zenia Villa presenting"
 };
 
+const links = [
+  {icon: GitHubIcon, href: "https://github.com/zeniavilla", label: "github.com/zeniavilla", id: "github-link"},
+  {icon: LinkedInIcon, href: "https://www.linkedin.com/in/zeniavilla", label: "linkedin.com/in/zeniavilla", id: "linkedin-link"},
+  {icon: Mail, href: "mailto:zavilla90@gmail.com", label: "zavilla90@gmail.com", id: "email-link"}
+];
+
 function About() {
   return (
     <div id="about" className="max-w-4xl mx-auto px-4 py-8">
-      <SectionTitle title="About me" />
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
-        <div>
-          <img
-            src={zv}
-            alt={ABOUT_CONTENT.imageAlt}
-            className="w-full h-96 object-cover rounded-lg"
-          />
+      <SectionTitle title="About Me" />
+      <div className="grid grid-cols-1 md:grid-cols-5 gap-8 mt-16">
+        <div className="flex flex-col md:col-span-2">
+          <div className="sticky top-20">
+            <img
+              src={zv}
+              alt={ABOUT_CONTENT.imageAlt}
+              className="w-full h-96 object-cover rounded-lg"
+            />
+            <div className="flex flex-col gap-2.5 mt-8">
+              {
+                links.map(link => (
+                  <div className="flex flex-row gap-3 items-center">
+                    <link.icon height={18} width={18} className="text-gray-600" />
+                    <a href={link.href} target="_blank" className="text-gray-600 text-base font-light leading-5">
+                      {link.label}
+                    </a>
+                    <ArrowUpRight className="text-gray-600" height={14} width={14} />
+                  </div>
+                ))
+              }
+            </div>
+          </div>
         </div>
-        <div className="space-y-4">
+        <div className="space-y-4 md:col-span-3">
           <h2 className="text-2xl font-medium">{ABOUT_CONTENT.greeting}</h2>
           {ABOUT_CONTENT.intro.map((paragraph, i) => (
             <p key={i} className="text-gray-700">{paragraph}</p>

@@ -7,24 +7,24 @@ interface SectionTitleProps {
 }
 
 function SectionTitle({
-  size = 'h3',
+  size = 'h1',
   title,
   subtitle,
   link,
   linkText
 }: SectionTitleProps) {
   const sizeClasses = {
-    h1: 'text-5xl',
-    h2: 'text-4xl',
-    h3: 'text-3xl',
-    h4: 'text-2xl',
-    h5: 'text-xl',
-    h6: 'text-lg',
+    h1: 'text-6xl',
+    h2: 'text-5xl',
+    h3: 'text-4xl',
+    h4: 'text-3xl',
+    h5: 'text-2xl',
+    h6: 'text-xl',
   };
 
   return (
     <div className="mb-6">
-      <div className={`${sizeClasses[size]} font-medium text-gray-900 mb-2`}>
+      <div className={`${sizeClasses[size]} font-light text-gray-900 mb-2`}>
         {title}
       </div>
       {subtitle && (
