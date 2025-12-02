@@ -12,21 +12,29 @@ const Home = () => {
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">
-      <SectionTitle title="Zenia Villa" subtitle="Frontend Product Engineer" />
-      <div className="flex flex-row gap-4">
-        {
-          socialLinks.map((link) => (
-            <a
-              href={link.href}
-              target="_blank"
-              key={link.id}
-              className="rounded-full border border-gray-200 p-4 flex items-center justify-center hover:border-gray-400 hover:bg-gray-50 transition-all"
-              aria-label={link.ariaLabel}
-            >
-              <link.icon width={18} height={18} className="text-gray-600" />
-            </a>
-          ))
-        }
+      <div className="mb-16">
+        <SectionTitle title="Zenia Villa" subtitle="Frontend Product Engineer" />
+
+        {/* Contact Links */}
+        <div className="flex flex-row gap-4">
+          {
+            socialLinks.map((link) => (
+              <a
+                href={link.href}
+                target="_blank"
+                key={link.id}
+                className="rounded-full border border-gray-200 p-4 flex items-center justify-center hover:border-gray-400 hover:bg-gray-50 transition-all"
+                aria-label={link.ariaLabel}
+              >
+                <link.icon width={18} height={18} className="text-gray-600" />
+              </a>
+            ))
+          }
+        </div>
+      </div>
+
+      <div className="max-w-3xl mb-24">
+        <p className="text-2xl text-gray-700 leading-relaxed font-light">I build digital experiences with a focus on clean code and intuitive interfaces. Currently working at <b>Eluvio</b>, previously at <b>IBM Aspera</b>.</p>
       </div>
     </div>
   );
