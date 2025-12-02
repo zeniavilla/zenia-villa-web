@@ -77,27 +77,29 @@ const navLinks = [
 
 const DesktopNav = () => {
   return (
-    <div className="flex flex-row gap-8 pt-12 pb-8 pl-8 pr-8">
-      <div>ZV</div>
+    <header className="flex flex-row pt-12 pb-8 pl-8 pr-8">
+      <NavLink to="/home">ZV</NavLink>
       <div className="ml-auto"></div>
-      {
-        navLinks.map((link) => (
-          <NavLink
-            to={link.path}
-            key={link.title}
-            className={
-            ({isActive}) =>
-              cn(
-                "text-xl",
-                isActive ? "font-medium text-gray-800" : "font-light text-gray-500"
-              )
-            }
-          >
-            {link.title}
-          </NavLink>
-        ))
-      }
-    </div>
+      <nav className="flex gap-8">
+        {
+          navLinks.map((link) => (
+            <NavLink
+              to={link.path}
+              key={link.title}
+              className={
+              ({isActive}) =>
+                cn(
+                  "text-xl",
+                  isActive ? "font-normal text-gray-900" : "font-light text-gray-500 hover:text-gray-900"
+                )
+              }
+            >
+              {link.title}
+            </NavLink>
+          ))
+        }
+      </nav>
+    </header>
   );
 };
 
