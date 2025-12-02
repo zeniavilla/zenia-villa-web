@@ -5,6 +5,7 @@ import Contact from '@/pages/contact/contact.tsx';
 import Resume from '@/components/resume/resume.tsx';
 import Projects from '@/pages/projects/all/projects.tsx';
 import Footer from '@/components/footer/footer.tsx';
+import Home from '@/pages/home/home.tsx';
 
 const App = () => {
   return (
@@ -12,7 +13,8 @@ const App = () => {
       <TopNavigation />
       <div className="body">
         <Routes>
-          <Route path="/" element={<About />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/home" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/resume" element={<Resume />} />

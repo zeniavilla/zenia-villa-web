@@ -2,6 +2,7 @@ import { NavLink } from 'react-router';
 import { cn } from '@/lib/utils.ts';
 
 const navLinks = [
+  { title: 'Home', path: '/home' },
   { title: 'About me', path: '/about' },
   { title: 'Resume', path: '/resume' },
   { title: 'Projects', path: '/projects' },
