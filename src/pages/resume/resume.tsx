@@ -1,5 +1,8 @@
-import SectionTitle from '../section-title/section-title';
+import SectionTitle from '../../components/section-title/section-title.tsx';
 import pdf from '@/assets/docs/zv-resume.pdf';
+import {Button} from "@/components/ui/button";
+import { Download } from 'lucide-react';
+import zv from '@/assets/images/pollinate-presentation.webp';
 
 interface ResumeData {
   timeframe: string;
@@ -39,27 +42,29 @@ const resumeData: ResumeData[] = [
 function Resume() {
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">
-      <SectionTitle title="Resume" />
-      <a
-        href={pdf}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="inline-block mb-8 px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 no-underline"
-      >
-        Download CV
-      </a>
-      {resumeData.map(data => (
-        <div key={data.timeframe} className="bg-white shadow-md rounded-lg p-6 mb-6">
-          <h3 className="text-lg font-semibold mb-1">{data.timeframe}</h3>
-          <p className="text-sm uppercase text-gray-600 mb-1">{data.title}</p>
-          <p className="text-sm uppercase text-gray-600 mb-4">{data.company}</p>
-          {data.body.map((paragraph, index) => (
-            <p key={index} className="text-sm text-gray-700 mb-3">
-              {paragraph}
-            </p>
-          ))}
-        </div>
-      ))}
+      <SectionTitle
+        title="Resume"
+        description="Frontend engineer with a unique journey through retail, product design, and marketing—bringing a decade of UX thinking to building intuitive web experiences."
+        image={zv}
+        button={
+          <Button variant="outline" className="flex items-center gap-2 px-6 py-3 border border-gray-200 rounded-lg hover:border-gray-400 hover:bg-gray-50 transition-all text-gray-900 font-light group">
+            Download PDF
+            <Download />
+          </Button>
+        }
+      />
+      {/*{resumeData.map(data => (*/}
+      {/*  <div key={data.timeframe} className="bg-white shadow-md rounded-lg p-6 mb-6">*/}
+      {/*    <h3 className="text-lg font-semibold mb-1">{data.timeframe}</h3>*/}
+      {/*    <p className="text-sm uppercase text-gray-600 mb-1">{data.title}</p>*/}
+      {/*    <p className="text-sm uppercase text-gray-600 mb-4">{data.company}</p>*/}
+      {/*    {data.body.map((paragraph, index) => (*/}
+      {/*      <p key={index} className="text-sm text-gray-700 mb-3">*/}
+      {/*        {paragraph}*/}
+      {/*      </p>*/}
+      {/*    ))}*/}
+      {/*  </div>*/}
+      {/*))}*/}
     </div>
   );
 }

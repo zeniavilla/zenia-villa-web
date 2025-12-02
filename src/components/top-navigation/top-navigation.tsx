@@ -89,7 +89,6 @@ const DesktopNav = () => {
               className={
               ({isActive}) =>
                 cn(
-                  "text-xl",
                   isActive ? "font-normal text-gray-900" : "font-light text-gray-500 hover:text-gray-900"
                 )
               }

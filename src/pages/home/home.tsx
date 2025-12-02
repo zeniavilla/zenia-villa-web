@@ -13,7 +13,7 @@ const Home = () => {
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">
       <div className="mb-16">
-        <SectionTitle title="Zenia Villa" subtitle="Frontend Product Engineer" />
+        <SectionTitle title="Zenia Villa" subtitle="Frontend Product Engineer" size="7xl" />
 
         {/* Contact Links */}
         <div className="flex flex-row gap-4">

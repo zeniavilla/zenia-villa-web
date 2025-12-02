@@ -2,7 +2,7 @@ import TopNavigation from '@/components/top-navigation/top-navigation.tsx';
 import { BrowserRouter as Router, Route, Routes } from 'react-router';
 import About from '@/pages/about/about.tsx';
 import Contact from '@/pages/contact/contact.tsx';
-import Resume from '@/components/resume/resume.tsx';
+import Resume from '@/pages/resume/resume.tsx';
 import Projects from '@/pages/projects/all/projects.tsx';
 import Footer from '@/components/footer/footer.tsx';
 import Home from '@/pages/home/home.tsx';
