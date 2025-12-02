@@ -9,7 +9,7 @@ interface SectionTitleProps {
 }
 
 function SectionTitle({
-  size = '8xl',
+  size = '7xl',
   title,
   subtitle,
   link,
@@ -28,11 +28,11 @@ function SectionTitle({
 
   return (
     <div className="mb-6">
-      <div className={`${sizeClasses[size]} font-light text-gray-900 mb-2`}>
+      <div className={`${sizeClasses[size]} font-light text-gray-900 mb-4 tracking-tight`}>
         {title}
       </div>
       {subtitle && (
-        <p className="text-2xl text-gray-500 font-light mb-2">{subtitle}</p>
+        <p className="text-2xl text-gray-500 font-light mb-8">{subtitle}</p>
       )}
       {link && linkText && (
         <a
