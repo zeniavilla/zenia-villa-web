@@ -34,10 +34,16 @@ const SOCIAL_LINKS = [
   {icon: Mail, href: "mailto:zavilla90@gmail.com", label: "zavilla90@gmail.com", id: "email-link"}
 ];
 
-const resumeData: ResumeData[] = [
+const RESUME_DATA: ResumeData[] = [
   {
-    timeframe: '2018 - Present',
-    title: 'Software Engineer I && II',
+    timeframe: '2021 - Present',
+    title: 'Senior Software Engineer',
+    company: 'Eluvio',
+    body: []
+  },
+  {
+    timeframe: '2018 - 2021',
+    title: 'Software Engineer',
     company: 'IBM Aspera',
     body: [
       "I joined the IBM Aspera team as it was in the beginning stages of Aspera on Cloud (AoC), a SaaS file transfer application. After doing some server-side work for web apps Faspex and Files, I had the opportunity to build features on the client-side and quickly joined the front-end development team. Throughout my time at Aspera, I've moved through the pipeline (pun intended) of fixing small bugs to implementing major features and being an active part of design-development discussions (I love accidental alliteration).",
@@ -57,33 +63,10 @@ const resumeData: ResumeData[] = [
     title: 'Marketing Coordinator & Manager',
     company: 'AMCT Design | Giumarra Companies',
     body: [
-      "During this time, I took on various roles in different industries. The highlights include producing tradeshows for an internationally-recognized produce brand, social media strategy and content, creating and managing a startup's website, and sales. A lot of the creativity and being product-minded has carried over into my work as a developer. Moreover, these years helped me realize my love of and talent for working closely with people."
+      "During this time, I took on various roles in different industries. The highlights include producing tradeshows for an internationally-recognized produce brand, social media strategy and content, creating and managing a startup's website, and sales. A lot of the creativity and being product-minded has carried over into my work as a developer. Moreover, these years helped me realize my love of working closely with people."
     ],
   },
 ];
-
-function GetInTouch () {
-  return (
-    <div className="py-16">
-      <section className="mb-24">
-        <h2 className="text-4xl font-light text-gray-900 mb-8">
-          Get in Touch
-        </h2>
-        <div className="flex flex-col gap-6 mt-8">
-          {
-            SOCIAL_LINKS.map(link => (
-              <a href={link.href} target="_blank" className="text-gray-600 text-lg font-light leading-5 hover:opacity-100 flex items-center gap-3 group">
-                <link.icon height={22} width={22} className="text-gray-600" />
-                  {link.label}
-                <ArrowUpRight className="text-gray-600 opacity-0 group-hover:opacity-100" height={16} width={16} />
-              </a>
-            ))
-          }
-        </div>
-      </section>
-    </div>
-  );
-}
 
 function Background() {
   return (
@@ -111,6 +94,63 @@ function Background() {
   );
 }
 
+function Experience() {
+  return (
+    <div className="py-16 border-b border-gray-200">
+      <section className="mb-24">
+        <h2 className="text-4xl font-light text-gray-900 mb-8">
+          Experience
+        </h2>
+        <div className="space-y-12">
+          {
+            RESUME_DATA.map((item, i) => (
+              <div key={`${item.title}-${i}`} className="space-y-4 border-l-2 border-gray-200 pl-6">
+                <div className="flex flex-start justify-between mb-4">
+                  <div>
+                    <h3 className="text-2xl font-normal text-gray-900 mb-1">
+                      {item.title}
+                    </h3>
+                    <p className="text-xl text-gray-600 font-light mb-2">
+                      {item.company}
+                    </p>
+                  </div>
+                  <span className="text-sm text-gray-400 font-light">
+                    {item.timeframe}
+                  </span>
+                </div>
+                <p className="text-gray-700 font-light text-lg leading-relaxed">{item.body}</p>
+              </div>
+            ))
+          }
+        </div>
+      </section>
+    </div>
+  );
+}
+
+function GetInTouch() {
+  return (
+    <div className="py-16">
+      <section className="mb-24">
+        <h2 className="text-4xl font-light text-gray-900 mb-8">
+          Get in Touch
+        </h2>
+        <div className="flex flex-col gap-6 mt-8">
+          {
+            SOCIAL_LINKS.map(link => (
+              <a href={link.href} target="_blank" className="text-gray-600 text-lg font-light leading-5 hover:opacity-100 flex items-center gap-3 group">
+                <link.icon height={22} width={22} className="text-gray-600" />
+                {link.label}
+                <ArrowUpRight className="text-gray-600 opacity-0 group-hover:opacity-100" height={16} width={16} />
+              </a>
+            ))
+          }
+        </div>
+      </section>
+    </div>
+  );
+}
+
 function Resume() {
   return (
     <div className="max-w-4xl mx-auto pb-8">
@@ -131,6 +171,7 @@ function Resume() {
       />
 
       <Background />
+      <Experience />
       <GetInTouch />
     </div>
   );

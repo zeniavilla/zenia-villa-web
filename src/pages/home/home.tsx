@@ -34,7 +34,8 @@ const Home = () => {
       </div>
 
       <div className="max-w-3xl mb-24">
-        <p className="text-2xl text-gray-700 leading-relaxed font-light">I build digital experiences with a focus on clean code and intuitive interfaces. Currently working at <b>Eluvio</b>, previously at <b>IBM Aspera</b>.</p>
+        <p className="text-2xl mb-2">Oh, hey</p>
+        <p className="text-xl text-gray-700 leading-relaxed font-light">I build digital experiences with a focus on clean code and intuitive interfaces. Currently working at <b>Eluvio</b>, previously at <b>IBM Aspera</b>.</p>
       </div>
     </div>
   );
