@@ -1,3 +1,4 @@
+// For Vite config and build tooling
 {
   "compilerOptions": {
     "composite": true,

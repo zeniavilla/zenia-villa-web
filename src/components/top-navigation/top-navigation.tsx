@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router';
 import { cn } from '@/lib/utils.ts';
+import Logo from '@/components/logo/logo.tsx';
 
 const navLinks = [
   { title: 'Home', path: '/home' },
@@ -76,7 +77,7 @@ const navLinks = [
 const DesktopNav = () => {
   return (
     <header className="flex flex-row pt-12 pb-8 pl-8 pr-8">
-      <NavLink to="/home">ZV</NavLink>
+      <Logo className="text-gray-900" />
       <div className="ml-auto"></div>
       <nav className="flex gap-8">
         {
