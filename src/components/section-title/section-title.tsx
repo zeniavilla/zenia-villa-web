@@ -8,7 +8,9 @@ interface SectionTitleProps {
   subtitle?: string;
   description?: string;
   image?: string;
+  imageAlt?: string;
   button?: ReactNode;
+  border?: boolean;
 }
 
 function SectionTitle({
@@ -17,7 +19,9 @@ function SectionTitle({
   subtitle,
   description,
   image,
-  button
+  imageAlt,
+  button,
+  border=false
 }: SectionTitleProps) {
   const sizeClasses: Record<TextSize, string> = {
     "8xl": "text-8xl",
@@ -31,16 +35,14 @@ function SectionTitle({
   };
 
   return (
-    <div>
+    <div className={`${border ? "border-b border-gray-200 px-8 py-16" : ""}`}>
       <div className="flex items-start mb-6 gap-12">
         {/* Photo */}
         {
           image &&
           <div className="flex-shrink-0">
             <div className="w-32 h-32 rounded-full overflow-hidden">
-              <div className="w-full h-full flex items-center justify-center text-gray-400 font-light text-sm">
-                <img src={image} alt="picture of Zenia Villa"/>
-              </div>
+              <img src={image} alt={imageAlt} className="w-full h-full object-cover" />
             </div>
           </div>
         }

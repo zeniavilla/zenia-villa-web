@@ -5,7 +5,6 @@ import LinkedInIcon from '@/components/icons/LinkedInIcon.tsx';
 import { ArrowUpRight, Mail } from 'lucide-react';
 
 const ABOUT_CONTENT = {
-  greeting: "Oh, hey",
   intro: [
     "My name is Zenia (prounounced Zee-nee-uh). I'm a software engineer at Eluvio, with a focus on frontend.",
     "I'm pretty obsessed with the user experience, which I've focused on throughout my education and career. This healthy obsession has been the driving thread throughout my career. I've used this focus to tackle problems in wildly different fields, proving that great UX is universal:"

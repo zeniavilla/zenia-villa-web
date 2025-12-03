@@ -11,6 +11,21 @@ interface ResumeData {
   body: string[];
 }
 
+const ABOUT_CONTENT = {
+  greeting: "Oh, hey",
+  intro: [
+    "My name is Zenia (prounounced Zee-nee-uh). I'm a software engineer at Eluvio, with a focus on frontend.",
+    "I'm pretty obsessed with the user experience, which I've focused on throughout my education and career. This healthy obsession has been the driving thread throughout my career. I've used this focus to tackle problems in wildly different fields, proving that great UX is universal:"
+  ],
+  highlights: [
+    "My education in Apparel Merchandising & Management sparked my UX obsession. I learned the core flow of the in-store customer journey, studying how to optimize the retail environment and products to convert shoppers into customers.",
+    "In Product Development for Interior Design (AMCT Design), I applied that skill by translating high-end textile concepts into simple, buildable carpet products, spearheading projects from initial design concept through development, production, and final installation.",
+    "For the massively recognized Nature's Partner brand (Giumarra Companies), I managed key marketing channels—from producing major trade shows and designing retailer sales materials, to launching early consumer-focused campaigns--all to help keep the brand visible on nearly every major grocery shelf across the US and Canada.",
+    "Today, in SaaS Enterprise-level Products (IBM & Eluvio), I bring this background to the frontend. As a software engineer, I'm the puzzle solver for gnarly tech (like cloud and blockchain), building intuitive interfaces from the most complex enterprise requirements."
+  ],
+  imageAlt: "Zenia Villa presenting"
+};
+
 const resumeData: ResumeData[] = [
   {
     timeframe: '2018 - Present',
@@ -41,11 +56,12 @@ const resumeData: ResumeData[] = [
 
 function Resume() {
   return (
-    <div className="max-w-4xl mx-auto px-4 py-8">
+    <div className="max-w-4xl mx-auto pb-8">
       <SectionTitle
         title="Resume"
         description="Frontend engineer with a unique journey through retail, product design, and marketing—bringing a decade of UX thinking to building intuitive web experiences."
         image={zv}
+        imageAlt="Zenia Villa presenting"
         button={
           <Button asChild variant="outline" className="flex items-center gap-2 px-6 py-3 border border-gray-200 rounded-lg hover:border-gray-400 hover:bg-gray-50 transition-all text-gray-900 font-light group">
             <a href={resume} download="zenia-villa-resume.pdf">
@@ -54,19 +70,31 @@ function Resume() {
             </a>
           </Button>
         }
+        border
       />
-      {/*{resumeData.map(data => (*/}
-      {/*  <div key={data.timeframe} className="bg-white shadow-md rounded-lg p-6 mb-6">*/}
-      {/*    <h3 className="text-lg font-semibold mb-1">{data.timeframe}</h3>*/}
-      {/*    <p className="text-sm uppercase text-gray-600 mb-1">{data.title}</p>*/}
-      {/*    <p className="text-sm uppercase text-gray-600 mb-4">{data.company}</p>*/}
-      {/*    {data.body.map((paragraph, index) => (*/}
-      {/*      <p key={index} className="text-sm text-gray-700 mb-3">*/}
-      {/*        {paragraph}*/}
-      {/*      </p>*/}
-      {/*    ))}*/}
-      {/*  </div>*/}
-      {/*))}*/}
+
+      {/* Background */}
+      <div className="max-w-5xl mx-auto px-8 py-16">
+        <section className="mb-24">
+          <h2 className="text-4xl font-light text-gray-900 mb-8">
+            Background
+          </h2>
+          <div className="space-y-6 text-gray-700 font-light text-lg leading-relaxed max-w-4xl">
+            {
+              ABOUT_CONTENT.intro.map(item => (
+                <p>{item}</p>
+              ))
+            }
+            <div className="space-y-4 pl-6 border-l-2 border-gray-200">
+              {
+                ABOUT_CONTENT.highlights.map(item => (
+                  <p>{item}</p>
+                ))
+              }
+            </div>
+          </div>
+        </section>
+      </div>
     </div>
   );
 }
