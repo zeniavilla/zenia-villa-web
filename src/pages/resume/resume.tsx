@@ -62,7 +62,7 @@ const resumeData: ResumeData[] = [
   },
 ];
 
-const GetInTouch = () => {
+function GetInTouch () {
   return (
     <div className="py-16">
       <section className="mb-24">
@@ -85,7 +85,33 @@ const GetInTouch = () => {
       </section>
     </div>
   );
-};
+}
+
+function Background() {
+  return (
+    <div className="max-w-5xl mx-auto py-16 border-b border-gray-200">
+      <section>
+        <h2 className="text-4xl font-light text-gray-900 mb-8">
+          Background
+        </h2>
+        <div className="space-y-6 text-gray-700 font-light text-lg leading-relaxed max-w-4xl">
+          {
+            ABOUT_CONTENT.intro.map(item => (
+              <p>{item}</p>
+            ))
+          }
+          <div className="space-y-4 pl-6 border-l-2 border-gray-200">
+            {
+              ABOUT_CONTENT.highlights.map(item => (
+                <p>{item}</p>
+              ))
+            }
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
 
 function Resume() {
   return (
@@ -106,29 +132,7 @@ function Resume() {
         border
       />
 
-      {/* Background */}
-      <div className="max-w-5xl mx-auto py-16 border-b border-gray-200">
-        <section>
-          <h2 className="text-4xl font-light text-gray-900 mb-8">
-            Background
-          </h2>
-          <div className="space-y-6 text-gray-700 font-light text-lg leading-relaxed max-w-4xl">
-            {
-              ABOUT_CONTENT.intro.map(item => (
-                <p>{item}</p>
-              ))
-            }
-            <div className="space-y-4 pl-6 border-l-2 border-gray-200">
-              {
-                ABOUT_CONTENT.highlights.map(item => (
-                  <p>{item}</p>
-                ))
-              }
-            </div>
-          </div>
-        </section>
-      </div>
-
+      <Background />
       <GetInTouch />
     </div>
   );
