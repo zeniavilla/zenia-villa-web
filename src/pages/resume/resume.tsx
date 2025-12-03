@@ -1,8 +1,8 @@
 import SectionTitle from '../../components/section-title/section-title.tsx';
-import pdf from '@/assets/docs/zv-resume.pdf';
 import {Button} from "@/components/ui/button";
 import { Download } from 'lucide-react';
 import zv from '@/assets/images/pollinate-presentation.webp';
+import resume from '@/assets/docs/zenia-villa-resume.pdf';
 
 interface ResumeData {
   timeframe: string;
@@ -47,9 +47,11 @@ function Resume() {
         description="Frontend engineer with a unique journey through retail, product design, and marketing—bringing a decade of UX thinking to building intuitive web experiences."
         image={zv}
         button={
-          <Button variant="outline" className="flex items-center gap-2 px-6 py-3 border border-gray-200 rounded-lg hover:border-gray-400 hover:bg-gray-50 transition-all text-gray-900 font-light group">
-            Download PDF
-            <Download />
+          <Button asChild variant="outline" className="flex items-center gap-2 px-6 py-3 border border-gray-200 rounded-lg hover:border-gray-400 hover:bg-gray-50 transition-all text-gray-900 font-light group">
+            <a href={resume} download="zenia-villa-resume.pdf">
+              Download PDF
+              <Download />
+            </a>
           </Button>
         }
       />
