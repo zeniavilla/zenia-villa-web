@@ -1,8 +1,10 @@
 import SectionTitle from '../../components/section-title/section-title.tsx';
 import {Button} from "@/components/ui/button";
-import { Download } from 'lucide-react';
+import { ArrowUpRight, Download, Mail } from 'lucide-react';
 import zv from '@/assets/images/pollinate-presentation.webp';
 import resume from '@/assets/docs/zenia-villa-resume.pdf';
+import GitHubIcon from '@/components/icons/GitHubIcon.tsx';
+import LinkedInIcon from '@/components/icons/LinkedInIcon.tsx';
 
 interface ResumeData {
   timeframe: string;
@@ -25,6 +27,12 @@ const ABOUT_CONTENT = {
   ],
   imageAlt: "Zenia Villa presenting"
 };
+
+const SOCIAL_LINKS = [
+  {icon: GitHubIcon, href: "https://github.com/zeniavilla", label: "github.com/zeniavilla", id: "github-link"},
+  {icon: LinkedInIcon, href: "https://www.linkedin.com/in/zeniavilla", label: "linkedin.com/in/zeniavilla", id: "linkedin-link"},
+  {icon: Mail, href: "mailto:zavilla90@gmail.com", label: "zavilla90@gmail.com", id: "email-link"}
+];
 
 const resumeData: ResumeData[] = [
   {
@@ -54,6 +62,31 @@ const resumeData: ResumeData[] = [
   },
 ];
 
+const GetInTouch = () => {
+  return (
+    <div className="py-16">
+      <section className="mb-24">
+        <h2 className="text-4xl font-light text-gray-900 mb-8">
+          Get in Touch
+        </h2>
+        <div className="flex flex-col gap-2.5 mt-8">
+          {
+            SOCIAL_LINKS.map(link => (
+              <div className="flex flex-row gap-3 items-center">
+                <link.icon height={18} width={18} className="text-gray-600" />
+                <a href={link.href} target="_blank" className="text-gray-600 text-base font-light leading-5">
+                  {link.label}
+                </a>
+                <ArrowUpRight className="text-gray-600" height={14} width={14} />
+              </div>
+            ))
+          }
+        </div>
+      </section>
+    </div>
+  );
+};
+
 function Resume() {
   return (
     <div className="max-w-4xl mx-auto pb-8">
@@ -74,8 +107,8 @@ function Resume() {
       />
 
       {/* Background */}
-      <div className="max-w-5xl mx-auto px-8 py-16">
-        <section className="mb-24">
+      <div className="max-w-5xl mx-auto py-16 border-b border-gray-200">
+        <section>
           <h2 className="text-4xl font-light text-gray-900 mb-8">
             Background
           </h2>
@@ -95,6 +128,8 @@ function Resume() {
           </div>
         </section>
       </div>
+
+      <GetInTouch />
     </div>
   );
 }

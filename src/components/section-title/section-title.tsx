@@ -35,7 +35,7 @@ function SectionTitle({
   };
 
   return (
-    <div className={`${border ? "border-b border-gray-200 px-8 py-16" : ""}`}>
+    <div className={`${border ? "border-b border-gray-200 py-16" : ""}`}>
       <div className="flex items-start mb-6 gap-12">
         {/* Photo */}
         {
