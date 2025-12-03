@@ -69,16 +69,14 @@ function GetInTouch () {
         <h2 className="text-4xl font-light text-gray-900 mb-8">
           Get in Touch
         </h2>
-        <div className="flex flex-col gap-2.5 mt-8">
+        <div className="flex flex-col gap-6 mt-8">
           {
             SOCIAL_LINKS.map(link => (
-              <div className="flex flex-row gap-3 items-center">
-                <link.icon height={18} width={18} className="text-gray-600" />
-                <a href={link.href} target="_blank" className="text-gray-600 text-base font-light leading-5">
+              <a href={link.href} target="_blank" className="text-gray-600 text-lg font-light leading-5 hover:opacity-100 flex items-center gap-3 group">
+                <link.icon height={22} width={22} className="text-gray-600" />
                   {link.label}
-                </a>
-                <ArrowUpRight className="text-gray-600" height={14} width={14} />
-              </div>
+                <ArrowUpRight className="text-gray-600 opacity-0 group-hover:opacity-100" height={16} width={16} />
+              </a>
             ))
           }
         </div>
