@@ -2,8 +2,10 @@ import SectionTitle from '../../../components/section-title/section-title.tsx';
 import { Badge } from '@/components/ui/badge.tsx';
 import { ArrowUpRight } from 'lucide-react';
 import { PROJECTS, colorClasses } from '@/data/projects';
+import { useNavigate } from 'react-router';
 
 interface ProjectSectionProps {
+  id: string;
   color: string;
   title: string;
   image: string;
@@ -13,6 +15,7 @@ interface ProjectSectionProps {
 }
 
 function ProjectSection({
+  id,
   color,
   title,
   image,
@@ -20,9 +23,11 @@ function ProjectSection({
   description,
   technologies=[]
 }: ProjectSectionProps) {
+  const navigate = useNavigate();
+
   return (
     <article className="group">
-      <button className={`w-full block p-8 rounded-2xl transition-all duration-300 text-left hover:bg-gray-50/50 ${colorClasses[color].background}`}>
+      <button className={`w-full block p-8 rounded-2xl transition-all duration-300 text-left hover:bg-gray-50/50 ${colorClasses[color].background}`} onClick={() => navigate(id)}>
         <div className="grid grid-cols-12 gap-8">
           <div className="col-span-4">
             {image ? (
@@ -69,6 +74,8 @@ function Projects() {
 
             return (
               <ProjectSection
+                key={projectId}
+                id={projectId}
                 color={project.color}
                 title={project.title}
                 image={project.images.preview.source}
