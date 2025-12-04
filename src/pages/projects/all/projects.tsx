@@ -1,7 +1,9 @@
 import SectionTitle from '../../../components/section-title/section-title.tsx';
 import byok1 from '@/assets/images/byok1.webp';
 import byok2 from '@/assets/images/byok2.webp';
+import byok1Preview from '@/assets/images/byok1-preview.png';
 import favorites from '@/assets/images/favorites.webp';
+import favoritesPreview from '@/assets/images/favorites-preview.png';
 import transfers from '@/assets/images/transfers.webp';
 import ProjectDetails from '../details/project.tsx';
 import { Badge } from '@/components/ui/badge.tsx';
@@ -16,14 +18,14 @@ interface ProjectSectionProps {
   technologies: string[];
 }
 
-interface ProjectDataProps {
+interface ProjectData {
   color: string;
   title: string;
   tagline: string;
-  role: string;
-  opportunity: string;
-  summary: string[];
-  timeline: string;
+  role?: string;
+  opportunity?: string;
+  summary?: string[];
+  timeline?: string;
   year: string;
   images: {preview: {source: string; caption?: string}, all: { source: string; caption?: string }[]};
   technologies: string[];
@@ -31,17 +33,34 @@ interface ProjectDataProps {
 
 const colorClasses: Record<string, { background: string, icon: string }> = {
   violet: {background: 'bg-gradient-to-r hover:from-violet-500/10 hover:to-purple-500/10', icon: "group-hover:text-violet-600"},
-  // blue: 'bg-gradient-to-r from-blue-500/5 to-cyan-500/5 hover:from-blue-500/10 hover:to-cyan-500/10',
-  // green: 'bg-gradient-to-r from-green-500/5 to-emerald-500/5 hover:from-green-500/10 hover:to-emerald-500/10',
+  blue: {background: 'bg-gradient-to-r hover:from-blue-500/10 hover:to-cyan-500/10', icon: "group-hover:text-cyan-600"},
+  green: {background: 'bg-gradient-to-r hover:from-green-500/10 hover:to-emerald-500/10', icon: 'group-hover:text-green-600'},
   // orange: 'bg-gradient-to-r from-orange-500/5 to-amber-500/5 hover:from-orange-500/10 hover:to-amber-500/10',
   // pink: 'bg-gradient-to-r from-pink-500/5 to-rose-500/5 hover:from-pink-500/10 hover:to-rose-500/10',
 };
 
-const PROJECTS: ProjectDataProps[] = [
+const PROJECTS: ProjectData[] = [
+  {
+    color: "green",
+    title: "Transfers Re-work",
+    tagline: "Redesigned core transfer architecture to eliminate polling and boost performance",
+    technologies: ["React"],
+    year: "2021",
+    images: {preview: {source: transfers}, all: []}
+  },
+  {
+    color: "blue",
+    title: "Favorite Files",
+    tagline: "Created folder bookmarking feature for quick access to frequently used files",
+    technologies: ["React"],
+    year: "2020",
+    images: {preview: {source: favoritesPreview}, all: []}
+  },
   {
     color: "violet",
     title: "Key Management Integration",
     tagline: "Built frontend for bring-your-own-key encryption integration",
+    technologies: ["React", "Carbon Design System"],
     role: "Lead Frontend Engineer",
     opportunity: "To allow customers to bring their own keys for server-side encryption at rest, giving them more control over the security of their data.",
     summary: [
@@ -52,14 +71,13 @@ const PROJECTS: ProjectDataProps[] = [
     year: "2020",
     images: {
       preview: {
-        source: "", caption: ""
+        source: byok1Preview, caption: ""
       },
       all: [
         {source: byok1, caption: "View for creating a new KMS profile"},
         {source: byok2, caption: "Add input option to connect KMS profile with new and existing nodes."}
       ]
-    },
-    technologies: ["React", "Carbon Design System"],
+    }
   }
 ];
 
@@ -77,7 +95,7 @@ function ProjectSection({
         <div className="grid grid-cols-12 gap-8">
           <div className="col-span-4">
             {image ? (
-              <img src={image} alt={`Project ${title}`} />
+              <img src={image} alt={`Project ${title}`} className="rounded-xs" />
             ) : (
               <div className={`w-full h-[50px] ${colorClasses[color].background} rounded`} />
             )}
