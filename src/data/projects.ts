@@ -32,21 +32,23 @@ export const colorClasses: Record<string, { background: string, icon: string }> 
 };
 
 export const PROJECTS: ProjectData = {
-  "transfers-rework": {
-    id: "transfers-rework",
-    color: "green",
-    title: "Transfers Re-work",
-    tagline: "Redesigned core transfer architecture to eliminate polling and boost performance",
-    technologies: ["React"],
-    year: "2021",
-    images: {preview: {source: transfers, alt: "Preview of Transfers Panel"}, all: [{source: transfers, caption: "Transfer panel", alt: "Full Transfer Panel"}]},
-    role: "Lead Frontend Engineer",
-    timeline: "",
-    overview: "Transfers are the heart of Aspera on Cloud. Since its initial implementation, we have been using the pattern of polling the node to get updated transfer information, such as the latest transfer status and data written/expected. In a cross-team effort to improve site performance and reliability, we decided to move away from polling. To any reader, I'd love to discuss this further if you'd like to know more but would rather not publish any other details.",
-    challenge: "",
-    technicalApproach: "",
-    reflection: [""]
-  },
+  // "transfers-rework": {
+  //   id: "transfers-rework",
+  //   color: "green",
+  //   title: "Transfers Re-work",
+  //   tagline: "Redesigned core transfer architecture to eliminate polling and boost performance",
+  //   technologies: ["React"],
+  //   year: "2021",
+  //   images: {preview: {source: transfers, alt: "Preview of Transfers Panel"}, all: [{source: transfers, caption: "Transfer panel", alt: "Full Transfer Panel"}]},
+  //   role: "Lead Frontend Engineer",
+  //   timeline: "",
+  //   overview: "This project was a major cross-team effort meant to improve site performance and reliability in Aspera on Cloud. Transfers are the heart of our app, but since its initial implementation, we've relied on an old pattern of polling the node to constantly check for updates (like transfer progress and data metrics). I served as the Lead Frontend Developer through all planning and implementation phases, working closely with the Frontend Team Lead on architectural strategy.",
+  //   challenge: "The core challenge was migrating away from the traditional polling pattern—which, while reliable, was a constant performance drain—without compromising the user's ability to see real-time, accurate transfer updates. This required significant synchronization across the entire stack, essentially rebuilding how we ingest and display critical, live data. We needed a new solution that maintained the high frequency of updates users expected while dramatically reducing the unnecessary network chatter caused by constant polling requests.",
+  //   technicalApproach: "My technical effort was focused on leading the Frontend implementation for the new data ingestion method. This involved intense collaboration with Backend Developers to ensure the new data stream (the non-polling solution) was correctly structured and integrated with our UI components. I also worked closely with QA Engineers to thoroughly validate that the new system provided transfer status and data metrics with the same, or better, accuracy and reliability as the old polling system. The goal was a drop-in replacement that was entirely transparent to the user, offering better performance behind the scenes.",
+  //   reflection: [
+  //     "This project reinforced how crucial cross-team alignment is when tackling foundational architecture. Moving away from polling—a pattern that was essentially baked into the application's DNA—was a massive undertaking. Serving as the Frontend lead, I learned the importance of representing the UI's needs in those larger cross-team architecture discussions. The success of this transition, marked by improved site performance, validates that sometimes the biggest performance gains come from retiring old, inefficient architectural patterns at the core of the system."
+  //   ]
+  // },
   "favorite-files": {
     id: "favorite-files",
     color: "blue",
@@ -57,18 +59,12 @@ export const PROJECTS: ProjectData = {
     images: {preview: {source: favoritesPreview, alt: "Preview of Favorites Feature"}, all: [{source: favorites, caption: "Favorite file view", alt: "Full Favorite File View"}]},
     role: "Lead Frontend Engineer",
     timeline: "3 Months",
-    overview: "This involved the BE team creating an API endpoint within the AoC infrastructure that would contain basic data. That basic data would allow the UI to display an initial rendering, make calls to get file info from our Node API, and do a final render to display updated information (name and size may have changed, for example). It was important to make async calls to gather the more detailed file information from the Node so as not to block the DOM instead of combining both calls together.",
-    challenge: `The views within the Files application are minimal. Folders and files are organized by Workspace, then the folder structure the user creates, however nested they choose. Example:
-      Root:
-        < Marvel movies
-          < Avengers universe
-            < Captain Marvel
-          < 2021 planned releases
-        < HBO Max
-          < Insecure
-      Customers have requested a view to access their bookmarked folders, creating a smoother workflow for the user.`,
-    technicalApproach: "",
-    reflection: [""]
+    overview: "The goal here was to create a new, streamlined view in the File application, specifically for bookmarked folders. Our customers explicitly asked for this feature to create a much smoother workflow, moving beyond the minimal, deeply nested structure we offered at the time, e.g., Root > Marvel movies > Avengers universe > Captain Marvel. This feature helps users quickly jump to the folders they care about most, regardless of how they're structured in the file hierarchy.",
+    challenge: "The biggest challenge was in getting all the file data efficiently without slowing down the user experience. File information was actually split between two places: basic data from the new AoC infrastructure endpoint, and the detailed data came from the existing Node API. We had to make sure we could fetch and display an initial view quickly, then update the details (like file name or size, which might have changed) without the user seeing the whole page freeze while waiting on the heavier Node API call.",
+    technicalApproach: "The implementation depended on the Backend team creating a new API endpoint within the AoC infrastructure to provide only basic file data. On the client-side, we used that basic data to render the view immediately, adn then we made separate, asynchronous calls to the Node API to bring in the details. This async, two-step method made sure the DOM never got blocked, keeping the entire application feeling fast.",
+    reflection: [
+      "This project was a great example of how architecture directly impacts user experience. We learned that splitting the workload into a quick basic load followed by a detailed background update was the perfect way to deal with our dual data sources. The final 'Favorites' view was super responsive, addressed a customer pain point, and proved that thought async design really pays off in performance."
+    ]
   },
   "key-management": {
     id: "key-management",
@@ -88,10 +84,11 @@ export const PROJECTS: ProjectData = {
     },
     role: "Lead Frontend Engineer",
     timeline: "5 Months",
-    overview:
-      "The project was first introduced as a customer request. Given its elaborate architecture and the number of teams individuals, collaboration and communication were my biggest contributions. The Frontend code was rather straightforward, which included form and admin settings changes, but I was able to flex other muscles such as staying in constant contact with the Designer and Tech Writer assigned to the project, as there were many design iterations. One design proposal that didn't make it to implementation was the option to create a Key Management Service profile within the form of a Node creation/update. This design pattern didn't exist anywhere else in the apps and would have involved extra work to create a POST call, handling errors so as not to destroy the user's filled out form, and rethinking other pages that might adopt this pattern. In the end, we decided if was too much of an effort for the project scope and not enough of an impact.",
-    challenge: "",
-    technicalApproach: "",
-    reflection: [""]
+    overview: "This project was a direct response to a customer request for better security—specifically, the ability to use their own keys for server-side encryption. Since the architecture was pretty involved and cross a lot of team boundaries, my focus wasn't solely on the code. I spent a great deal of time as the main communication channel. The frontend forms and admin setting updates were manageable, which freed me up to handle that coordination.",
+    challenge: "We hit a roadblock when we considered letting users create a Key Management Service (KMS) profile directly within the Node creation page. That specific pattern was completely new and didn't exist anywhere else in our applications. If we had moved forward, it would have meant creating a new POST call, adding error handling so users didn't lose all their form data, and forcing us to rethink how we build similar pages going forward. Ultimately, we decided it was too much effort for the scope of the project and didn't deliver enough value to justify the engineering cost.",
+    technicalApproach: "I executed all the necessary frontend changes for the configuration forms. The real strategy was constantly partnering with the Designer and Tech Writer to navigate the ongoing design iterations. That collaboration was the core of the UI delivery. My most impactful decision was pushing back on the KMS profile creation feature; keeping that complex, non-standard workflow out of scope allowed us to stay focused and deliver the core encryption feature more efficiently and on time.",
+    reflection: [
+      "My biggest takeaway from this project was how crucial communication and scoping are in a multi-team environment. The code itself was fine, but my ability to stay in constant contact with the design and documentation teams was key. It also taught me a lesson in balancing features; it's important to challenge ideas if the amount of technical debt or effort they introduce far outweigh the immediate benefit. That focus kept the project clean and successful."
+    ]
   }
 };
