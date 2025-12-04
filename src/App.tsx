@@ -4,6 +4,7 @@ import Resume from '@/pages/resume/resume.tsx';
 import Projects from '@/pages/projects/all/projects.tsx';
 import Footer from '@/components/footer/footer.tsx';
 import Home from '@/pages/home/home.tsx';
+import ProjectDetails from '@/pages/projects/details/project-details.tsx';
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
             <Route path="/home" element={<Home />} />
             <Route path="/resume" element={<Resume />} />
             <Route path="/projects" element={<Projects />} />
+            <Route path="/projects/:id" element={<ProjectDetails />} />
           </Routes>
         </main>
         <Footer />

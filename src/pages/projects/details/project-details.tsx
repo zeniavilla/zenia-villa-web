@@ -13,7 +13,14 @@ interface ProjectDetailsProps {
   timeline: string;
 }
 
-function ProjectDetails({ title, opportunity, projectRole, images, summary, timeline }: ProjectDetailsProps) {
+function ProjectDetails({
+  title,
+  opportunity,
+  projectRole,
+  images,
+  summary,
+  timeline
+}: ProjectDetailsProps) {
   return (
     <section className="mb-12">
       <h2 className="text-2xl font-bold mb-6">{title}</h2>
