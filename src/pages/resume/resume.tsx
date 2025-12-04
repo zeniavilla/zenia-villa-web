@@ -48,7 +48,9 @@ const EXPERIENCE_DATA: ExperienceData[] = [
     timeframe: '2021 - Present',
     title: 'Senior Software Engineer',
     company: 'Eluvio',
-    body: []
+    body: [
+      "Eluvio has been my initiation into the tech startup world, and it has been quite the learning curve (with just as much payoff). I have quickly learned what it means to completely own a product, building a few core applications from scratch. Since the team is lean, I have gained first-hand exposure to architectural design and have stepped into multiple roles for my own projects—from creating thoughtful designs to jumping in on manual testing and even driving them forward. More than anything, I've become more passionate about Product Engineering—developing for the user and their specific needs, rather than just focusing on the technical code requirements."
+    ]
   },
   {
     id: "ibm-experience",
