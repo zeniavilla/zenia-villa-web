@@ -1,12 +1,6 @@
 import { PROJECTS } from '@/data/projects.ts';
-import { useParams } from 'react-router';
-import { Calendar, Clock } from 'lucide-react';
-
-interface ImageSection {
-  source: string;
-  caption: string;
-  altText?: string;
-}
+import { NavLink, useParams } from 'react-router';
+import { ArrowLeft, Calendar, Clock } from 'lucide-react';
 
 function ProjectDetails() {
   const { id } = useParams<{id: string}>();
@@ -25,6 +19,10 @@ function ProjectDetails() {
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">
+      <NavLink className="flex flex-row items-center gap-2 text-gray-600 hover:text-gray-900 font-light" to="/projects">
+        <ArrowLeft size={18} />
+        <div>Back to Projects</div>
+      </NavLink>
       {/* Hero Section */}
       <section className="py-16">
         <div className="mb-8">
