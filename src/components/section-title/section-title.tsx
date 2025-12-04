@@ -35,7 +35,7 @@ function SectionTitle({
   };
 
   return (
-    <div className={`${border ? "border-b border-gray-200 py-8 md:py-12 lg:py-16" : ""}`}>
+    <div className={`${border ? "border-b border-border dark:border-white/60 py-8 md:py-12 lg:py-16" : ""}`}>
       <div className="flex flex-col md:flex-row items-start mb-4 md:mb-6 gap-6 md:gap-8 lg:gap-12">
         {/* Photo */}
         {
@@ -51,15 +51,15 @@ function SectionTitle({
         <div className="flex-1">
           <div className="flex flex-col md:flex-row items-start justify-between gap-4 md:gap-6">
             <div className="flex-1">
-              <div className={`${sizeClasses[size]} font-light text-gray-900 mb-3 md:mb-4`}>
+              <div className={`${sizeClasses[size]} font-light text-foreground mb-3 md:mb-4`}>
                 {title}
               </div>
               {
                 description &&
-                <p className="text-base md:text-lg lg:text-xl text-gray-600 font-light max-w-2xl">{description}</p>
+                <p className="text-base md:text-lg lg:text-xl text-muted-foreground dark:text-gray-400 font-light max-w-2xl">{description}</p>
               }
               {subtitle && (
-                <p className="text-base md:text-lg lg:text-xl text-gray-500 font-light mb-6 md:mb-8">{subtitle}</p>
+                <p className="text-base md:text-lg lg:text-xl text-muted-foreground dark:text-gray-400 font-light mb-6 md:mb-8">{subtitle}</p>
               )}
             </div>
             {/* Button */}

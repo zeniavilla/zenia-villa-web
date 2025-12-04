@@ -29,7 +29,7 @@ export interface BadgeProps
 
 function Badge({ className, variant, ...props }: BadgeProps) {
   return (
-    <div className={cn(badgeVariants({ variant }), "font-light text-sm text-gray-700", className)} {...props} />
+    <div className={cn(badgeVariants({ variant }), "font-light text-sm text-foreground", className)} {...props} />
   )
 }
 

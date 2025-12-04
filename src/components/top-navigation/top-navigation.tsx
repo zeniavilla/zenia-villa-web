@@ -10,6 +10,7 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
 } from '@/components/ui/navigation-menu';
+import { ModeToggle } from '@/components/mode-toggle/mode-toggle.tsx';
 
 const navLinks = [
   { title: 'Home', path: '/home' },
@@ -23,10 +24,10 @@ const MobileNav = () => {
   return (
     <header className="md:hidden px-4 py-6">
       <div className="flex items-center justify-between">
-        <Logo className="text-gray-900" width={32} height={32} />
+        <Logo className="text-foreground" width={32} height={32} />
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="p-2 hover:bg-gray-100 rounded-md transition-colors"
+          className="p-2 hover:bg-muted rounded-md transition-colors"
           aria-label="Toggle menu"
         >
           {isOpen ? <X size={24} /> : <Menu size={24} />}
@@ -44,8 +45,8 @@ const MobileNav = () => {
               className={({isActive}) => cn(
                 "px-4 py-3 rounded-md transition-colors",
                 isActive
-                  ? "font-normal text-gray-900 bg-gray-100"
-                  : "font-light text-gray-500 hover:text-gray-900 hover:bg-gray-50"
+                  ? "font-normal text-foreground dark:text-white bg-muted"
+                  : "font-light text-muted-foreground dark:text-gray-400 hover:text-foreground hover:bg-muted/50"
               )}
             >
               {link.title}
@@ -59,9 +60,9 @@ const MobileNav = () => {
 
 const DesktopNav = () => {
   return (
-    <header className="hidden md:flex flex-row pt-12 pb-8 px-4 md:px-8 w-full">
+    <header className="hidden md:flex flex-row pt-12 pb-8 px-12 md:px-10 lg:px-12 w-full">
       <NavigationMenu className="w-full max-w-full">
-        <Logo className="text-gray-900" />
+        <Logo className="text-foreground" />
         <div className="ml-auto">
           <NavigationMenuList className="flex gap-8">
             {
@@ -70,8 +71,8 @@ const DesktopNav = () => {
                   <NavLink to={link.path}>
                     {({isActive}) => (
                       <NavigationMenuLink className={cn(
-                        "font-light text-gray-500 hover:text-gray-900",
-                        isActive && "font-normal text-gray-900"
+                        "font-light text-muted-foreground dark:text-gray-400 hover:text-foreground",
+                        isActive && "font-normal text-foreground dark:text-white"
                       )}>
                         {link.title}
                       </NavigationMenuLink>
@@ -80,6 +81,7 @@ const DesktopNav = () => {
                 </NavigationMenuItem>
               ))
             }
+            <ModeToggle />
           </NavigationMenuList>
         </div>
       </NavigationMenu>
