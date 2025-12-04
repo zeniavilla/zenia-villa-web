@@ -4,11 +4,129 @@ import byok2 from '@/assets/images/byok2.webp';
 import favorites from '@/assets/images/favorites.webp';
 import transfers from '@/assets/images/transfers.webp';
 import ProjectDetails from '../details/project.tsx';
+import { Badge } from '@/components/ui/badge.tsx';
+import { ArrowUpRight } from 'lucide-react';
+
+interface ProjectSectionProps {
+  color: string;
+  title: string;
+  image: string;
+  year: string;
+  description: string;
+  technologies: string[];
+}
+
+interface ProjectDataProps {
+  color: string;
+  title: string;
+  tagline: string;
+  role: string;
+  opportunity: string;
+  summary: string[];
+  timeline: string;
+  year: string;
+  images: {preview: {source: string; caption?: string}, all: { source: string; caption?: string }[]};
+  technologies: string[];
+}
+
+const colorClasses: Record<string, { background: string, icon: string }> = {
+  violet: {background: 'bg-gradient-to-r hover:from-violet-500/10 hover:to-purple-500/10', icon: "group-hover:text-violet-600"},
+  // blue: 'bg-gradient-to-r from-blue-500/5 to-cyan-500/5 hover:from-blue-500/10 hover:to-cyan-500/10',
+  // green: 'bg-gradient-to-r from-green-500/5 to-emerald-500/5 hover:from-green-500/10 hover:to-emerald-500/10',
+  // orange: 'bg-gradient-to-r from-orange-500/5 to-amber-500/5 hover:from-orange-500/10 hover:to-amber-500/10',
+  // pink: 'bg-gradient-to-r from-pink-500/5 to-rose-500/5 hover:from-pink-500/10 hover:to-rose-500/10',
+};
+
+const PROJECTS: ProjectDataProps[] = [
+  {
+    color: "violet",
+    title: "Key Management Integration",
+    tagline: "Built frontend for bring-your-own-key encryption integration",
+    role: "Lead Frontend Engineer",
+    opportunity: "To allow customers to bring their own keys for server-side encryption at rest, giving them more control over the security of their data.",
+    summary: [
+      "The project was first introduced as a customer request. Given its elaborate architecture and the number of teams individuals, collaboration and communication were my biggest contributions. The Frontend code was rather straightforward, which included form and admin settings changes, but I was able to flex other muscles such as staying in constant contact with the Designer and Tech Writer assigned to the project, as there were many design iterations.",
+      "One design proposal that didn't make it to implementation was the option to create a Key Management Service profile within the form of a Node creation/update. This design pattern didn't exist anywhere else in the apps and would have involved extra work to create a POST call, handling errors so as not to destroy the user's filled out form, and rethinking other pages that might adopt this pattern. In the end, we decided if was too much of an effort for the project scope and not enough of an impact."
+    ],
+    timeline: "Early January 2020 - End of May 2020",
+    year: "2020",
+    images: {
+      preview: {
+        source: "", caption: ""
+      },
+      all: [
+        {source: byok1, caption: "View for creating a new KMS profile"},
+        {source: byok2, caption: "Add input option to connect KMS profile with new and existing nodes."}
+      ]
+    },
+    technologies: ["React", "Carbon Design System"],
+  }
+];
+
+function ProjectSection({
+  color,
+  title,
+  image,
+  year,
+  description,
+  technologies=[]
+}: ProjectSectionProps) {
+  return (
+    <article className="group">
+      <button className={`w-full block p-8 rounded-2xl transition-all duration-300 text-left hover:bg-gray-50/50 ${colorClasses[color].background}`}>
+        <div className="grid grid-cols-12 gap-8">
+          <div className="col-span-4">
+            {image ? (
+              <img src={image} alt={`Project ${title}`} />
+            ) : (
+              <div className={`w-full h-[50px] ${colorClasses[color].background} rounded`} />
+            )}
+          </div>
+
+          <div className="col-span-8 flex flex-col">
+            <div className="flex items-start justify-between mb-3">
+              <div className="flex-1">
+                <div className="flex items-center gap-3 mb-2">
+                  <h3 className="text-3xl font-light text-gray-900">{title}</h3>
+                  <ArrowUpRight className={`text-gray-400 ${colorClasses[color].icon}`} height={20} width={20} />
+                </div>
+
+                <div className="text-sm text-gray-500 font-light">{year}</div>
+              </div>
+            </div>
+            <p className="text-gray-700 font-light leading-relaxed mb-6 flex-1 text-lg">{description}</p>
+            <div className="flex flex-wrap gap-3">
+              {
+                technologies.map(tech => (
+                  <Badge variant="outline" className="bg-white/50">{tech}</Badge>
+                ))
+              }
+            </div>
+          </div>
+        </div>
+      </button>
+    </article>
+  );
+}
 
 function Projects() {
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">
-      <SectionTitle title="Projects" />
+      <SectionTitle title="Projects" description="A collection of work spanning my time at IBM and Eluvio." border />
+      <section className="py-16">
+        {
+          PROJECTS.map(project => (
+            <ProjectSection
+              color={project.color}
+              title={project.title}
+              image={project.images.preview.source}
+              year={project.year}
+              description={project.tagline}
+              technologies={project.technologies}
+            />
+          ))
+        }
+      </section>
       <ProjectDetails
         title="Key management integration"
         opportunity="To allow customers to bring their own keys for server-side encryption at rest, giving them more control over the security of their data."

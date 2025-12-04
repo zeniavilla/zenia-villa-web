@@ -82,14 +82,14 @@ const EXPERIENCE_DATA: ExperienceData[] = [
 
 const SKILLS: {label: string, values: string[], id: string}[] = [
   {label: "Languages", values: ["JavaScript", "TypeScript", "HTML", "CSS"], id: "skill-languages"},
-  {label: "Frameworks & Libraries", values: ["React", "Node.js"], id: "skill-frameworks"},
-  {label: "Tools & Platforms", values: ["Git", "Figma", "Webpack", "Vite"], id: "skill-tools"},
-  {label: "Specialties", values: ["Design systems"], id: "skill-specialties"}
+  {label: "Frameworks & Libraries", values: ["React", "Node.js", "MobX"], id: "skill-frameworks"},
+  {label: "UI & Design Systems", values: ["Carbon Design System", "shadcn/ui", "Mantine", "Tailwind CSS"], id: "skill-ui-design-systems"},
+  {label: "Tools & Platforms", values: ["Git", "Figma", "Storybook", "Webpack", "Vite"], id: "skill-tools"}
 ];
 
 function Background() {
   return (
-    <div className="max-w-5xl mx-auto py-16 border-b border-gray-200">
+    <div className="max-w-5xl mx-auto py-20 border-b border-gray-200">
       <section>
         <h2 className="text-4xl font-light text-gray-900 mb-8">
           Background
@@ -115,8 +115,8 @@ function Background() {
 
 function Experience() {
   return (
-    <div className="py-16 border-b border-gray-200">
-      <section className="mb-24">
+    <div className="py-20 border-b border-gray-200">
+      <section>
         <h2 className="text-4xl font-light text-gray-900 mb-8">
           Experience
         </h2>
@@ -154,7 +154,7 @@ function SkillSet({label, tags}: {label: string, tags: string[]}) {
       <div className="w-full flex flex-wrap gap-2">
         {
           tags.map((tag, i) => (
-            <Badge key={`${tag}-${i}`} variant="secondary">{tag}</Badge>
+            <Badge key={`${tag}-${i}`} variant="secondary" className="bg-gray-100">{tag}</Badge>
           ))
         }
       </div>
@@ -164,12 +164,12 @@ function SkillSet({label, tags}: {label: string, tags: string[]}) {
 
 function Skills() {
   return (
-    <div className="py-16 border-b border-gray-200">
-      <section className="mb-24">
+    <div className="py-20 border-b border-gray-200">
+      <section>
         <h2 className="text-4xl font-light text-gray-900 mb-8">
           Skills
         </h2>
-        <div className="grid grid-cols-2">
+        <div className="grid grid-cols-2 gap-12">
           {
             SKILLS.map(skill => (
               <SkillSet key={skill.id} label={skill.label} tags={skill.values} />
@@ -183,15 +183,15 @@ function Skills() {
 
 function GetInTouch() {
   return (
-    <div className="py-16">
-      <section className="mb-24">
+    <div className="py-20">
+      <section>
         <h2 className="text-4xl font-light text-gray-900 mb-8">
           Get in Touch
         </h2>
         <div className="flex flex-col gap-6 mt-8">
           {
             SOCIAL_LINKS.map(link => (
-              <a href={link.href} target="_blank" className="text-gray-600 text-lg font-light leading-5 hover:opacity-100 flex items-center gap-3 group">
+              <a href={link.href} target="_blank" className="text-gray-600 text-lg font-light leading-5 hover:opacity-100 flex items-center gap-3 group w-fit">
                 <link.icon height={22} width={22} className="text-gray-600" />
                 {link.label}
                 <ArrowUpRight className="text-gray-600 opacity-0 group-hover:opacity-100" height={16} width={16} />
