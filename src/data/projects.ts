@@ -54,7 +54,7 @@ export const PROJECTS: ProjectData = {
     color: "blue",
     title: "Favorite Files",
     tagline: "Created folder bookmarking feature for quick access to frequently used files",
-    technologies: ["React"],
+    technologies: ["React", "Carbon Design System"],
     year: "2020",
     images: {preview: {source: favoritesPreview, alt: "Preview of Favorites Feature"}, all: [{source: favorites, caption: "Favorite file view", alt: "Full Favorite File View"}]},
     role: "Lead Frontend Engineer",
