@@ -2,10 +2,14 @@
 /.pnp
 .pnp.js
 /coverage
-/build
+/dist
 .cache
 .DS_Store
 .env
 npm-debug.log*
 .vscode
 .netlify
+
+# Vite
+dist-ssr
+*.local
