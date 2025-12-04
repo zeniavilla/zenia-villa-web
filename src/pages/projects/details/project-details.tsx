@@ -18,32 +18,32 @@ function ProjectDetails() {
   ];
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-8">
-      <NavLink className="flex flex-row items-center gap-2 text-gray-600 hover:text-gray-900 font-light" to="/projects">
+    <div className="max-w-4xl mx-auto px-4 md:px-6 lg:px-8 py-6 md:py-8">
+      <NavLink className="flex flex-row items-center gap-2 text-gray-600 hover:text-gray-900 font-light text-sm md:text-base" to="/projects">
         <ArrowLeft size={18} />
         <div>Back to Projects</div>
       </NavLink>
       {/* Hero Section */}
-      <section className="py-16">
-        <div className="mb-8">
-          <div className="flex items-center gap-3 text-sm text-gray-500 mb-6 font-light">
+      <section className="py-8 md:py-12 lg:py-16">
+        <div className="mb-6 md:mb-8">
+          <div className="flex flex-wrap items-center gap-2 md:gap-3 text-xs md:text-sm text-gray-500 mb-4 md:mb-6 font-light">
             <span className="flex items-center gap-2">
-              <Calendar size={16} />
+              <Calendar size={14} className="md:w-4 md:h-4" />
               {project.year}
             </span>
             <span>·</span>
             <span className="flex items-center gap-2">
-              <Clock size={16} />
+              <Clock size={14} className="md:w-4 md:h-4" />
               {project.timeline}
             </span>
             <span>·</span>
             <span>{project.role}</span>
           </div>
 
-          <h1 className="text-6xl font-light text-gray-900 mb-4">
+          <h1 className="text-3xl md:text-4xl lg:text-6xl font-light text-gray-900 mb-3 md:mb-4">
             {project.title}
           </h1>
-          <p className="text-2xl text-gray-600 font-light">
+          <p className="text-lg md:text-xl lg:text-2xl text-gray-600 font-light">
             {project.tagline}
           </p>
         </div>
@@ -64,21 +64,21 @@ function ProjectDetails() {
       </section>
 
       {/* Hero Image */}
-      <section className="max-w-5xl mx-auto px-8 mb-20">
-        <div className="aspect-[16/9] rounded-2xl bg-gradient-to-br from-violet-500/10 to-purple-500/10 border border-gray-100 flex items-center justify-center">
-          <span className="text-gray-400 font-light">Project Hero Image</span>
+      <section className="max-w-5xl mx-auto px-4 md:px-6 lg:px-8 mb-12 md:mb-16 lg:mb-20">
+        <div className="aspect-[16/9] rounded-xl md:rounded-2xl bg-gradient-to-br from-violet-500/10 to-purple-500/10 border border-gray-100 flex items-center justify-center">
+          <span className="text-gray-400 font-light text-sm md:text-base">Project Hero Image</span>
         </div>
       </section>
 
       {/* Main Content */}
-      <article className="max-w-3xl mx-auto px-8 mb-20">
-        <div className="space-y-16">
+      <article className="max-w-3xl mx-auto px-4 md:px-6 lg:px-8 mb-12 md:mb-16 lg:mb-20">
+        <div className="space-y-10 md:space-y-12 lg:space-y-16">
           {sections.map((section, index) => (
             <section key={index}>
-              <h2 className="text-3xl font-light text-gray-900 mb-6">
+              <h2 className="text-2xl md:text-3xl font-light text-gray-900 mb-4 md:mb-6">
                 {section.title}
               </h2>
-              <p className="text-lg text-gray-700 font-light leading-relaxed">
+              <p className="text-base md:text-lg text-gray-700 font-light leading-relaxed">
                 {section.content}
               </p>
             </section>
@@ -86,10 +86,10 @@ function ProjectDetails() {
 
           {/* Image Gallery */}
           <section>
-            <h2 className="text-3xl font-light text-gray-900 mb-8">
+            <h2 className="text-2xl md:text-3xl font-light text-gray-900 mb-6 md:mb-8">
               Interface Details
             </h2>
-            <div className="space-y-8">
+            <div className="space-y-6 md:space-y-8">
               {
                 project.images.all.map(image => (
                   <>
@@ -103,12 +103,12 @@ function ProjectDetails() {
 
           {/* Reflection */}
           <section>
-            <h2 className="text-3xl font-light text-gray-900 mb-6">
+            <h2 className="text-2xl md:text-3xl font-light text-gray-900 mb-4 md:mb-6">
               Reflection
             </h2>
             {
               project.reflection.map((paragraph, i) => (
-                <p key={i} className="text-lg text-gray-700 font-light leading-relaxed mb-4">
+                <p key={i} className="text-base md:text-lg text-gray-700 font-light leading-relaxed mb-3 md:mb-4">
                   {paragraph}
                 </p>
               ))

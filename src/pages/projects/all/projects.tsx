@@ -27,32 +27,32 @@ function ProjectSection({
 
   return (
     <article className="group">
-      <button className={`w-full block p-8 rounded-2xl transition-all duration-300 text-left hover:bg-gray-50/50 ${colorClasses[color].background}`} onClick={() => navigate(id)}>
-        <div className="grid grid-cols-12 gap-8">
-          <div className="col-span-4">
+      <button className={`w-full block p-4 md:p-6 lg:p-8 rounded-2xl transition-all duration-300 text-left hover:bg-gray-50/50 ${colorClasses[color].background}`} onClick={() => navigate(id)}>
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 lg:gap-8">
+          <div className="md:col-span-4">
             {image ? (
-              <img src={image} alt={`Project ${title}`} className="rounded-xs" />
+              <img src={image} alt={`Project ${title}`} className="rounded-xs w-full" />
             ) : (
               <div className={`w-full h-[50px] ${colorClasses[color].background} rounded`} />
             )}
           </div>
 
-          <div className="col-span-8 flex flex-col">
+          <div className="md:col-span-8 flex flex-col">
             <div className="flex items-start justify-between mb-3">
               <div className="flex-1">
-                <div className="flex items-center gap-3 mb-2">
-                  <h3 className="text-3xl font-light text-gray-900">{title}</h3>
-                  <ArrowUpRight className={`text-gray-400 ${colorClasses[color].icon}`} height={20} width={20} />
+                <div className="flex items-center gap-2 md:gap-3 mb-2">
+                  <h3 className="text-xl md:text-2xl lg:text-3xl font-light text-gray-900">{title}</h3>
+                  <ArrowUpRight className={`text-gray-400 ${colorClasses[color].icon}`} height={16} width={16} />
                 </div>
 
-                <div className="text-sm text-gray-500 font-light">{year}</div>
+                <div className="text-xs md:text-sm text-gray-500 font-light">{year}</div>
               </div>
             </div>
-            <p className="text-gray-700 font-light leading-relaxed mb-6 flex-1 text-lg">{description}</p>
-            <div className="flex flex-wrap gap-3">
+            <p className="text-gray-700 font-light leading-relaxed mb-4 md:mb-6 flex-1 text-base md:text-lg">{description}</p>
+            <div className="flex flex-wrap gap-2 md:gap-3">
               {
                 technologies.map(tech => (
-                  <Badge variant="outline" className="bg-white/50">{tech}</Badge>
+                  <Badge key={tech} variant="outline" className="bg-white/50 text-xs md:text-sm">{tech}</Badge>
                 ))
               }
             </div>
@@ -65,9 +65,9 @@ function ProjectSection({
 
 function Projects() {
   return (
-    <div className="max-w-4xl mx-auto px-4 py-8">
+    <div className="max-w-4xl mx-auto px-4 md:px-6 lg:px-8 py-6 md:py-8">
       <SectionTitle title="Projects" description="A collection of work spanning my time at IBM and Eluvio." border />
-      <section className="py-16">
+      <section className="py-8 md:py-12 lg:py-16 space-y-6">
         {
           Object.keys(PROJECTS).map(projectId => {
             const project = PROJECTS[projectId];

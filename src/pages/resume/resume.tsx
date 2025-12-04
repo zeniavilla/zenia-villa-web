@@ -89,12 +89,12 @@ const SKILLS: {label: string, values: string[], id: string}[] = [
 
 function Background() {
   return (
-    <div className="max-w-5xl mx-auto py-20 border-b border-gray-200">
+    <div className="max-w-5xl mx-auto py-12 md:py-16 lg:py-20 border-b border-gray-200">
       <section>
-        <h2 className="text-4xl font-light text-gray-900 mb-8">
+        <h2 className="text-2xl md:text-3xl lg:text-4xl font-light text-gray-900 mb-6 md:mb-8">
           Background
         </h2>
-        <div className="space-y-6 text-gray-700 font-light text-lg leading-relaxed max-w-4xl">
+        <div className="space-y-4 md:space-y-6 text-gray-700 font-light text-base md:text-lg leading-relaxed max-w-4xl">
           {
             ABOUT_CONTENT.intro.map(item => (
               <p>{item}</p>
@@ -115,12 +115,12 @@ function Background() {
 
 function Experience() {
   return (
-    <div className="py-20 border-b border-gray-200">
+    <div className="py-12 md:py-16 lg:py-20 border-b border-gray-200">
       <section>
-        <h2 className="text-4xl font-light text-gray-900 mb-8">
+        <h2 className="text-2xl md:text-3xl lg:text-4xl font-light text-gray-900 mb-6 md:mb-8">
           Experience
         </h2>
-        <div className="space-y-12">
+        <div className="space-y-8 md:space-y-12">
           {
             EXPERIENCE_DATA.map(item => (
               <div key={item.id} className="space-y-4 border-l-2 border-gray-200 pl-6">
@@ -164,12 +164,12 @@ function SkillSet({label, tags}: {label: string, tags: string[]}) {
 
 function Skills() {
   return (
-    <div className="py-20 border-b border-gray-200">
+    <div className="py-12 md:py-16 lg:py-20 border-b border-gray-200">
       <section>
-        <h2 className="text-4xl font-light text-gray-900 mb-8">
+        <h2 className="text-2xl md:text-3xl lg:text-4xl font-light text-gray-900 mb-6 md:mb-8">
           Skills
         </h2>
-        <div className="grid grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
           {
             SKILLS.map(skill => (
               <SkillSet key={skill.id} label={skill.label} tags={skill.values} />
@@ -183,15 +183,15 @@ function Skills() {
 
 function GetInTouch() {
   return (
-    <div className="py-20">
+    <div className="py-12 md:py-16 lg:py-20">
       <section>
-        <h2 className="text-4xl font-light text-gray-900 mb-8">
+        <h2 className="text-2xl md:text-3xl lg:text-4xl font-light text-gray-900 mb-6 md:mb-8">
           Get in Touch
         </h2>
-        <div className="flex flex-col gap-6 mt-8">
+        <div className="flex flex-col gap-4 md:gap-6 mt-6 md:mt-8">
           {
             SOCIAL_LINKS.map(link => (
-              <a href={link.href} target="_blank" className="text-gray-600 text-lg font-light leading-5 hover:opacity-100 flex items-center gap-3 group w-fit">
+              <a href={link.href} target="_blank" className="text-gray-600 text-base md:text-lg font-light leading-5 hover:opacity-100 flex items-center gap-3 group w-fit">
                 <link.icon height={22} width={22} className="text-gray-600" />
                 {link.label}
                 <ArrowUpRight className="text-gray-600 opacity-0 group-hover:opacity-100" height={16} width={16} />
@@ -206,7 +206,7 @@ function GetInTouch() {
 
 function Resume() {
   return (
-    <div className="max-w-4xl mx-auto pb-8">
+    <div className="max-w-4xl mx-auto px-4 md:px-6 lg:px-8 pb-6 md:pb-8">
       <SectionTitle
         title="Resume"
         description="Frontend engineer with a unique journey through retail, product design, and marketing—bringing a decade of UX thinking to building intuitive web experiences."

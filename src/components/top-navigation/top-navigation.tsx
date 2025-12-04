@@ -1,6 +1,15 @@
+import { useState } from 'react';
 import { NavLink } from 'react-router';
 import { cn } from '@/lib/utils.ts';
 import Logo from '@/components/logo/logo.tsx';
+import { Menu, X } from 'lucide-react';
+
+import {
+  NavigationMenu,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+} from '@/components/ui/navigation-menu';
 
 const navLinks = [
   { title: 'Home', path: '/home' },
@@ -8,101 +17,83 @@ const navLinks = [
   { title: 'Projects', path: '/projects' }
 ];
 
-// const MobileNav = () => {
-//   const [drawerOpen, setDrawerOpen] = useState(false);
-//
-//   return (
-//     <>
-//       <div className="fixed top-0 left-0 right-0 bg-white shadow-md z-50">
-//         <nav className="max-w-7xl mx-auto px-4 py-4">
-//           <div className="flex items-center justify-between">
-//             <Link to="/" className="flex items-center gap-2 no-underline">
-//               <h1 className="text-2xl font-bold text-gray-900">Zenia Villa</h1>
-//               <span className="text-gray-400 hidden sm:inline">/</span>
-//               <span className="text-sm text-gray-600 hidden sm:inline">Frontend Product Engineer</span>
-//             </Link>
-//
-//             <button
-//               onClick={() => setDrawerOpen(true)}
-//               className="p-2 hover:bg-gray-100 rounded-md"
-//               aria-label="menu"
-//             >
-//               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-//                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-//               </svg>
-//             </button>
-//           </div>
-//         </nav>
-//       </div>
-//
-//       {/* Spacer for fixed header */}
-//       <div className="h-16" />
-//
-//       {/* Mobile drawer */}
-//       {drawerOpen && (
-//         <>
-//           <div
-//             className="fixed inset-0 bg-black bg-opacity-50 z-40"
-//             onClick={() => setDrawerOpen(false)}
-//           />
-//           <div className="fixed right-0 top-0 bottom-0 w-64 bg-white shadow-lg z-50 p-4">
-//             <button
-//               onClick={() => setDrawerOpen(false)}
-//               className="p-2 hover:bg-gray-100 rounded-md mb-4"
-//             >
-//               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-//                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-//               </svg>
-//             </button>
-//             <ul className="space-y-2">
-//               {navLinks.map((link) => (
-//                 <li key={link.title}>
-//                   <Link
-//                     to={link.path}
-//                     onClick={() => setDrawerOpen(false)}
-//                     className="block px-4 py-2 hover:bg-gray-100 rounded-md text-gray-900 no-underline"
-//                   >
-//                     {link.title}
-//                   </Link>
-//                 </li>
-//               ))}
-//             </ul>
-//           </div>
-//         </>
-//       )}
-//     </>
-//   );
-// };
+const MobileNav = () => {
+  const [isOpen, setIsOpen] = useState(false);
 
-const DesktopNav = () => {
   return (
-    <header className="flex flex-row pt-12 pb-8 pl-8 pr-8">
-      <Logo className="text-gray-900" />
-      <div className="ml-auto"></div>
-      <nav className="flex gap-8">
-        {
-          navLinks.map((link) => (
+    <header className="md:hidden px-4 py-6">
+      <div className="flex items-center justify-between">
+        <Logo className="text-gray-900" width={32} height={32} />
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="p-2 hover:bg-gray-100 rounded-md transition-colors"
+          aria-label="Toggle menu"
+        >
+          {isOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
+      </div>
+
+      {/* Mobile menu */}
+      {isOpen && (
+        <nav className="mt-6 flex flex-col gap-4">
+          {navLinks.map(link => (
             <NavLink
-              to={link.path}
               key={link.title}
-              className={
-              ({isActive}) =>
-                cn(
-                  isActive ? "font-normal text-gray-900" : "font-light text-gray-500 hover:text-gray-900"
-                )
-              }
+              to={link.path}
+              onClick={() => setIsOpen(false)}
+              className={({isActive}) => cn(
+                "px-4 py-3 rounded-md transition-colors",
+                isActive
+                  ? "font-normal text-gray-900 bg-gray-100"
+                  : "font-light text-gray-500 hover:text-gray-900 hover:bg-gray-50"
+              )}
             >
               {link.title}
             </NavLink>
-          ))
-        }
-      </nav>
+          ))}
+        </nav>
+      )}
+    </header>
+  );
+};
+
+const DesktopNav = () => {
+  return (
+    <header className="hidden md:flex flex-row pt-12 pb-8 px-4 md:px-8 w-full">
+      <NavigationMenu className="w-full max-w-full">
+        <Logo className="text-gray-900" />
+        <div className="ml-auto">
+          <NavigationMenuList className="flex gap-8">
+            {
+              navLinks.map(link => (
+                <NavigationMenuItem key={link.title}>
+                  <NavLink to={link.path}>
+                    {({isActive}) => (
+                      <NavigationMenuLink className={cn(
+                        "font-light text-gray-500 hover:text-gray-900",
+                        isActive && "font-normal text-gray-900"
+                      )}>
+                        {link.title}
+                      </NavigationMenuLink>
+                    )}
+                  </NavLink>
+                </NavigationMenuItem>
+              ))
+            }
+          </NavigationMenuList>
+        </div>
+      </NavigationMenu>
     </header>
   );
 };
 
 const TopNavigation = () => {
-  return <DesktopNav />;
+  return (
+    <>
+      <MobileNav />
+      <DesktopNav />
+    </>
+  );
 }
 
 export default TopNavigation;

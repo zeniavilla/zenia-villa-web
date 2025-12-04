@@ -3,7 +3,7 @@ import byok2 from '@/assets/images/byok2.webp';
 import byok1Preview from '@/assets/images/byok1-preview.png';
 import favorites from '@/assets/images/favorites.webp';
 import favoritesPreview from '@/assets/images/favorites-preview.png';
-import transfers from '@/assets/images/transfers.webp';
+// import transfers from '@/assets/images/transfers.webp';
 
 export interface ProjectDataItem {
   id: string;
