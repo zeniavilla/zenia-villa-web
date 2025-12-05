@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
+  "homepage": "https://zeniavilla.github.io/zenia-villa-web/",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
