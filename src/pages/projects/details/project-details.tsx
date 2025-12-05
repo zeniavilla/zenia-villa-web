@@ -63,13 +63,6 @@ function ProjectDetails() {
         </div>
       </section>
 
-      {/* Hero Image */}
-      <section className="max-w-5xl mx-auto px-4 md:px-6 lg:px-8 mb-12 md:mb-16 lg:mb-20">
-        <div className="aspect-[16/9] rounded-xl md:rounded-2xl bg-gradient-to-br from-violet-500/10 to-purple-500/10 border border-border flex items-center justify-center">
-          <span className="text-muted-foreground font-light text-sm md:text-base">Project Hero Image</span>
-        </div>
-      </section>
-
       {/* Main Content */}
       <article className="max-w-3xl mx-auto px-4 md:px-6 lg:px-8 mb-12 md:mb-16 lg:mb-20">
         <div className="space-y-10 md:space-y-12 lg:space-y-16">
