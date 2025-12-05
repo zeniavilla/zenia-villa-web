@@ -86,7 +86,7 @@ function ProjectDetails() {
               {
                 project.images.all.map(image => (
                   <>
-                    <img src={image.source} alt={image.alt} className="mb-0 border border-border" />
+                    <img src={image.source} alt={image.alt} className="mb-0 border border-border" loading="lazy" />
                     <span className="font-light text-sm">{image.caption}</span>
                   </>
                 ))

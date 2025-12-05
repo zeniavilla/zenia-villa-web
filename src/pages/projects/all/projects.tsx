@@ -31,7 +31,7 @@ function ProjectSection({
         <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 lg:gap-8">
           <div className="md:col-span-4">
             {image ? (
-              <img src={image} alt={`Project ${title}`} className="rounded-xs w-full" />
+              <img src={image} alt={`Project ${title}`} className="rounded-xs w-full" loading="lazy" />
             ) : (
               <div className={`w-full h-[50px] ${colorClasses[color].background} rounded`} />
             )}

@@ -42,7 +42,7 @@ function SectionTitle({
           image &&
           <div className="flex-shrink-0">
             <div className="w-20 h-20 md:w-28 md:h-28 lg:w-32 lg:h-32 rounded-full overflow-hidden">
-              <img src={image} alt={imageAlt} className="w-full h-full object-cover" />
+              <img src={image} alt={imageAlt} className="w-full h-full object-cover" loading="lazy" />
             </div>
           </div>
         }
