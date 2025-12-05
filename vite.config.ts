@@ -4,7 +4,7 @@ import react from '@vitejs/plugin-react';
 import path from 'path';
 
 export default defineConfig({
-  base: './',
+  base: '/zenia-villa-web/',
   plugins: [react(), tailwindcss()],
   resolve: {
     alias: {
