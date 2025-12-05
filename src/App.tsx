@@ -9,7 +9,7 @@ import { ThemeProvider } from '@/components/theme-provider.tsx';
 
 const App = () => {
   return (
-    <ThemeProvider defaultTheme="system" storageKey="zv-ui-theme">
+    <ThemeProvider defaultTheme="light" storageKey="zv-ui-theme">
       <Router>
         <div className="min-h-screen flex flex-col">
           <TopNavigation />
