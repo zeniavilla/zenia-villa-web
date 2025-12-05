@@ -1,9 +1,14 @@
 import { PROJECTS } from '@/data/projects.ts';
 import { NavLink, useParams } from 'react-router';
 import { ArrowLeft, Calendar, Clock } from 'lucide-react';
+import { useScrollFade } from '@/hooks/useScrollFade.ts';
 
 function ProjectDetails() {
   const { id } = useParams<{id: string}>();
+  const heroFade = useScrollFade(0.1);
+  const contentFade = useScrollFade(0.1);
+  const galleryFade = useScrollFade(0.1);
+  const reflectionFade = useScrollFade(0.1);
 
   if(!id) {
     return null;
@@ -19,12 +24,15 @@ function ProjectDetails() {
 
   return (
     <div className="max-w-4xl mx-auto px-12 md:px-10 lg:px-12 py-6 md:py-8">
-      <NavLink className="flex flex-row items-center gap-2 text-muted-foreground hover:text-foreground font-light text-sm md:text-base" to="/projects">
+      <NavLink className="flex flex-row items-center gap-2 text-muted-foreground hover:text-foreground font-light text-sm md:text-base hover:-translate-x-3 transition:transform duration-300 ease-in-out" to="/projects">
         <ArrowLeft size={18} />
         <div>Back to Projects</div>
       </NavLink>
       {/* Hero Section */}
-      <section className="py-8 md:py-12 lg:py-16">
+      <section
+        ref={heroFade.ref}
+        className={`py-8 md:py-12 lg:py-16 transition-all duration-1000 ${heroFade.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+      >
         <div className="mb-6 md:mb-8">
           <div className="flex flex-wrap items-center gap-2 md:gap-3 text-xs md:text-sm text-muted-foreground mb-4 md:mb-6 font-light">
             <span className="flex items-center gap-2">
@@ -64,7 +72,10 @@ function ProjectDetails() {
       </section>
 
       {/* Main Content */}
-      <article className="max-w-3xl mx-auto px-4 md:px-6 lg:px-8 mb-12 md:mb-16 lg:mb-20">
+      <article
+        ref={contentFade.ref}
+        className={`max-w-3xl mx-auto px-4 md:px-6 lg:px-8 mb-12 md:mb-16 lg:mb-20 transition-all duration-1000 ${contentFade.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+      >
         <div className="space-y-10 md:space-y-12 lg:space-y-16">
           {sections.map((section, index) => (
             <section key={index}>
@@ -78,7 +89,10 @@ function ProjectDetails() {
           ))}
 
           {/* Image Gallery */}
-          <section>
+          <section
+            ref={galleryFade.ref}
+            className={`transition-all duration-1000 ${galleryFade.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+          >
             <h2 className="text-2xl md:text-3xl font-light text-foreground mb-6 md:mb-8">
               Interface Details
             </h2>
@@ -95,7 +109,10 @@ function ProjectDetails() {
           </section>
 
           {/* Reflection */}
-          <section>
+          <section
+            ref={reflectionFade.ref}
+            className={`transition-all duration-1000 ${reflectionFade.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+          >
             <h2 className="text-2xl md:text-3xl font-light text-foreground mb-4 md:mb-6">
               Reflection
             </h2>

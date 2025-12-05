@@ -13,7 +13,7 @@ const Home = () => {
   return (
     <div className="max-w-4xl mx-auto px-12 md:px-10 lg:px-12 py-8">
       <div className="mb-16">
-        <SectionTitle title="Zenia Villa" subtitle="Frontend Product Engineer" size="7xl" />
+        <SectionTitle title="Zenia Villa" subtitle="Frontend Product Engineer" size="8xl" />
 
         {/* Contact Links */}
         <div className="flex flex-row gap-4">
@@ -23,10 +23,10 @@ const Home = () => {
                 href={link.href}
                 target="_blank"
                 key={link.id}
-                className="rounded-full border border-border dark:border-white/30 p-4 flex items-center justify-center hover:border-foreground hover:bg-muted transition-all"
+                className="rounded-full border border-border dark:border-white/30 p-4 flex items-center justify-center hover:border-foreground hover:bg-muted hover:scale-110 duration-300 ease-in-out transition-all group"
                 aria-label={link.ariaLabel}
               >
-                <link.icon width={18} height={18} className="text-foreground" />
+                <link.icon width={18} height={18} className="text-foreground group-hover:scale-110 duration-300 ease-in-out transition-transform" />
               </a>
             ))
           }
@@ -34,8 +34,8 @@ const Home = () => {
       </div>
 
       <div className="max-w-3xl mb-24">
-        <p className="text-2xl mb-2">Oh, hey</p>
-        <p className="text-xl text-foreground leading-relaxed font-light">I build digital experiences with a focus on clean code and intuitive interfaces. Currently working at <b>Eluvio</b>, previously at <b>IBM Aspera</b>.</p>
+        <p className="text-4xl mb-6">Oh, hey</p>
+        <p className="text-2xl text-foreground font-light leading-relaxed tracking-wide">I build digital experiences with a focus on clean code and intuitive interfaces. Currently working at <b>Eluvio</b>, previously at <b>IBM Aspera</b>.</p>
       </div>
     </div>
   );

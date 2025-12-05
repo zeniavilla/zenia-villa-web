@@ -71,7 +71,7 @@ const DesktopNav = () => {
                   <NavLink to={link.path}>
                     {({isActive}) => (
                       <NavigationMenuLink className={cn(
-                        "font-light text-muted-foreground dark:text-gray-400 hover:text-foreground",
+                        "font-light text-muted-foreground dark:text-gray-400 hover:text-foreground relative after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 after:bg-foreground after:transition-all after:duration-300 hover:after:w-full",
                         isActive && "font-normal text-foreground dark:text-white"
                       )}>
                         {link.title}

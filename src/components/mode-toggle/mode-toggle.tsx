@@ -10,12 +10,12 @@ export function ModeToggle() {
   return (
     <Toggle
       aria-label="Toggle dark/light mode"
-      className="cursor-pointer"
+      className="cursor-pointer group"
       pressed={isDark}
       onClick={() => setTheme(isDark ? "light" : "dark")}
     >
-      <Sun className={`h-[1.2rem] w-[1.2rem] transition-all ${isDark ? 'scale-0 -rotate-90' : 'scale-100 rotate-0'}`} />
-      <Moon className={`absolute h-[1.2rem] w-[1.2rem] transition-all ${isDark ? 'scale-100 rotate-0' : 'scale-0 rotate-90'}`} />
+      <Sun className={`h-[1.2rem] w-[1.2rem] transition-all ${isDark ? 'scale-0 -rotate-90' : 'scale-100 rotate-0'} group-hover:rotate-30 duration-300 ease-in-out`} />
+      <Moon className={`absolute h-[1.2rem] w-[1.2rem] transition-all ${isDark ? 'scale-100 rotate-0' : 'scale-0 rotate-90'} group-hover:rotate-30 duration-300 ease-in-out`} />
     </Toggle>
   )
 }

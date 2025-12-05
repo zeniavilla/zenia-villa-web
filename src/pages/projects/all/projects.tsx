@@ -27,7 +27,7 @@ function ProjectSection({
 
   return (
     <article className="group">
-      <button className={`w-full block cursor-pointer p-4 md:p-6 lg:p-8 rounded-2xl transition-all duration-300 text-left hover:bg-muted/50 ${colorClasses[color].background}`} onClick={() => navigate(id)}>
+      <button className={`w-full block cursor-pointer p-4 md:p-6 lg:p-8 rounded-2xl transition-all duration-300 text-left hover:bg-muted/50 hover:-translate-y-2 hover:shadow-lg ${colorClasses[color].background}`} onClick={() => navigate(id)}>
         <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 lg:gap-8">
           <div className="md:col-span-4">
             {image ? (

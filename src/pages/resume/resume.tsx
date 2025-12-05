@@ -6,6 +6,7 @@ import zv from '@/assets/images/pollinate-presentation.webp';
 import resume from '@/assets/docs/zenia-villa-resume.pdf';
 import GitHubIcon from '@/components/icons/GitHubIcon.tsx';
 import LinkedInIcon from '@/components/icons/LinkedInIcon.tsx';
+import { useScrollFade } from '@/hooks/useScrollFade';
 
 interface ExperienceData {
   id: string;
@@ -90,8 +91,13 @@ const SKILLS: {label: string, values: string[], id: string}[] = [
 ];
 
 function Background() {
+  const { ref, isVisible } = useScrollFade(0.1);
+
   return (
-    <div className="max-w-5xl mx-auto py-12 md:py-16 lg:py-20 border-b border-border dark:border-white/60">
+    <div
+      ref={ref}
+      className={`max-w-5xl mx-auto py-12 md:py-16 lg:py-20 border-b border-border dark:border-white/60 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+    >
       <section>
         <h2 className="text-2xl md:text-3xl lg:text-4xl font-light text-foreground mb-6 md:mb-8">
           Background
@@ -116,8 +122,13 @@ function Background() {
 }
 
 function Experience() {
+  const { ref, isVisible } = useScrollFade(0.1);
+
   return (
-    <div className="py-12 md:py-16 lg:py-20 border-b border-border dark:border-white/60">
+    <div
+      ref={ref}
+      className={`py-12 md:py-16 lg:py-20 border-b border-border dark:border-white/60 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+    >
       <section>
         <h2 className="text-2xl md:text-3xl lg:text-4xl font-light text-foreground mb-6 md:mb-8">
           Experience
@@ -169,8 +180,13 @@ function SkillSet({label, tags}: {label: string, tags: string[]}) {
 }
 
 function Skills() {
+  const { ref, isVisible } = useScrollFade(0.1);
+
   return (
-    <div className="py-12 md:py-16 lg:py-20 border-b border-border dark:border-white/60">
+    <div
+      ref={ref}
+      className={`py-12 md:py-16 lg:py-20 border-b border-border dark:border-white/60 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+    >
       <section>
         <h2 className="text-2xl md:text-3xl lg:text-4xl font-light text-foreground mb-6 md:mb-8">
           Skills
@@ -188,8 +204,13 @@ function Skills() {
 }
 
 function GetInTouch() {
+  const { ref, isVisible } = useScrollFade(0.1);
+
   return (
-    <div className="py-12 md:py-16 lg:py-20">
+    <div
+      ref={ref}
+      className={`py-12 md:py-16 lg:py-20 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+    >
       <section>
         <h2 className="text-2xl md:text-3xl lg:text-4xl font-light text-foreground mb-6 md:mb-8">
           Get in Touch
@@ -197,10 +218,10 @@ function GetInTouch() {
         <div className="flex flex-col gap-4 md:gap-6 mt-6 md:mt-8">
           {
             SOCIAL_LINKS.map(link => (
-              <a href={link.href} target="_blank" className="text-muted-foreground text-base md:text-lg font-light leading-5 hover:opacity-100 flex items-center gap-3 group w-fit">
+              <a href={link.href} target="_blank" className="text-muted-foreground text-base md:text-lg font-light leading-5 hover:opacity-100 flex items-center gap-3 group w-fit hover:translate-x-3 transition:transform duration-300 ease-in-out">
                 <link.icon height={22} width={22} className="text-muted-foreground" />
                 {link.label}
-                <ArrowUpRight className="text-muted-foreground opacity-0 group-hover:opacity-100" height={16} width={16} />
+                <ArrowUpRight className="text-muted-foreground opacity-0 group-hover:opacity-100 group-hover:slide-in-from-start-translate-full duration-300 ease-in-out transition-transform" height={16} width={16} />
               </a>
             ))
           }
@@ -219,7 +240,7 @@ function Resume() {
         image={zv}
         imageAlt="Zenia Villa presenting"
         button={
-          <Button asChild variant="outline" className="flex items-center gap-2 px-6 py-3 border border-border dark:border-white/30 rounded-lg hover:border-foreground hover:bg-muted transition-all text-foreground font-light group">
+          <Button asChild variant="outline" className="flex items-center gap-2 px-6 py-3 border border-border dark:border-white/30 rounded-lg hover:border-foreground hover:bg-muted transition-all text-foreground font-light group hover:scale-110 duration-300 ease-in-out">
             <a href={resume} download="zenia-villa-resume.pdf">
               Download PDF
               <Download />
