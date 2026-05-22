@@ -32,7 +32,7 @@ export const SKILLS: Skill[] = [
   // AI Tools
   { label: 'Claude API', category: 'ai', featured: true },
   { label: 'Prompt Engineering', category: 'ai', featured: true },
-  { label: 'Cursor', category: 'ai', featured: true },
+  { label: 'Model Context Protocol', category: 'ai', featured: true },
 ];
 
 export const SKILL_GROUPS: { label: string; category: SkillCategory }[] = [

@@ -26,15 +26,28 @@ export class ZvTerminal extends LitElement {
     _announceText: { type: String, state: true },
   };
 
-  speed = 65;
-  loop = true;
-  prefix = '';
-  showChrome = false;
+  // 'declare' prevents TypeScript from emitting class-field initializers that would
+  // shadow Lit's reactive prototype accessors (useDefineForClassFields=true bug).
+  declare speed: number;
+  declare loop: boolean;
+  declare prefix: string;
+  declare showChrome: boolean;
+  // 'strings' is NOT in static properties (not reactive) — plain own property is fine.
   strings: string[] = [];
 
-  _displayText = '';
+  declare _displayText: string;
   /** Updated only when a full phrase finishes typing — announced to screen readers. */
-  _announceText = '';
+  declare _announceText: string;
+
+  constructor() {
+    super();
+    this.speed = 65;
+    this.loop = true;
+    this.prefix = '';
+    this.showChrome = false;
+    this._displayText = '';
+    this._announceText = '';
+  }
 
   private _currentStringIndex = 0;
   private _currentCharIndex = 0;

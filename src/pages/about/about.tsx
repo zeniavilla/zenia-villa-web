@@ -55,7 +55,7 @@ function Experience() {
         <h2 className="text-2xl md:text-3xl lg:text-4xl font-light text-foreground mb-10 md:mb-12">
           Experience
         </h2>
-        <div>
+        <div className="flex flex-col gap-8">
           {EXPERIENCE_DATA.map(item => (
             <ZvTimelineEntry
               key={item.id}
@@ -63,11 +63,8 @@ function Experience() {
               title={item.title}
               company={item.company}
               isCurrent={item.isCurrent}
-            >
-              {item.body.map((para, i) => (
-                <p key={i}>{para}</p>
-              ))}
-            </ZvTimelineEntry>
+              paragraphs={item.body}
+            />
           ))}
         </div>
       </section>
@@ -162,7 +159,7 @@ export default function About() {
             className="flex items-center gap-2 px-6 py-3 border border-border rounded-lg hover:border-foreground hover:bg-muted transition-all text-foreground font-light group hover:scale-110 duration-300 ease-in-out"
           >
             <a href={resume} download="zenia-villa-resume.pdf">
-              Download PDF
+              Download Resume
               <Download size={16} />
             </a>
           </Button>

@@ -19,8 +19,17 @@ export class ZvSkillChip extends LitElement {
     variant: { type: String, reflect: true },
   };
 
-  label = '';
-  variant: 'primary' | 'secondary' | 'ai' = 'primary';
+  // 'declare' prevents TypeScript from emitting a class-field initializer, which
+  // would shadow Lit's reactive prototype accessor when useDefineForClassFields=true.
+  // Default values are set in the constructor (through the reactive setter).
+  declare label: string;
+  declare variant: 'primary' | 'secondary' | 'ai';
+
+  constructor() {
+    super();
+    this.label = '';
+    this.variant = 'primary';
+  }
 
   static override styles = css`
     :host {
@@ -47,43 +56,21 @@ export class ZvSkillChip extends LitElement {
       white-space: nowrap;
     }
 
-    /* Shimmer sweep */
-    .chip::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 60%;
-      height: 100%;
-      background: linear-gradient(
-        90deg,
-        transparent,
-        oklch(1 0 0 / 0.15),
-        transparent
-      );
-      transition: left 500ms ease;
-      pointer-events: none;
-    }
-
-    .chip:hover::before {
-      left: 160%;
-    }
-
     /* AI variant */
     :host([variant='ai']) .chip {
       border-color: var(--ai-accent, oklch(0.55 0.18 280));
       color: var(--ai-accent, oklch(0.55 0.18 280));
-      background: var(--ai-accent-muted, oklch(0.55 0.18 280 / 0.1));
+      background: oklch(0.55 0.18 280 / 0.1);
+      transition:
+        background 1500ms ease 250ms,
+        box-shadow 1500ms ease 250ms;
     }
 
-    :host([variant='ai']) .chip::before {
-      background: linear-gradient(
-        90deg,
-        transparent,
-        var(--ai-accent-muted, oklch(0.55 0.18 280 / 0.25)),
-        transparent
-      );
+    :host([variant='ai']) .chip:hover {
+      background: oklch(0.48 0.20 280 / 0.38);
+      box-shadow: 0 0 14px 3px oklch(0.55 0.18 280 / 0.35);
     }
+
   `;
 
   private _handleClick() {

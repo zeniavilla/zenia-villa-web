@@ -156,7 +156,7 @@ export const PROJECTS: ProjectData = {
     role: 'Engineer & Designer',
     timeline: 'Ongoing',
     overview:
-      "This site is a complete ground-up rebuild of my personal portfolio. The goal was to move beyond a static resume-on-a-page and build something that reflects how I actually work as an engineer in 2025—using the best tools available, thinking carefully about architecture, and being transparent about process. The stack is React + TypeScript + Tailwind CSS v4, with three hand-built Lit web components showcasing my familiarity with the web platform beyond any single framework.",
+      "This site is a complete ground-up rebuild of my personal portfolio. The goal was to move beyond a static resume-on-a-page and build something that reflects how I actually work as an engineer in 2026—using the best tools available, thinking carefully about architecture, and being transparent about process. The stack is React + TypeScript + Tailwind CSS v4, with three hand-built Lit web components showcasing my familiarity with the web platform beyond any single framework.",
     challenge:
       "The interesting design challenge was figuring out how to honestly represent AI-assisted development without it feeling like a crutch or a footnote. There's a real temptation to either over-claim or under-claim. The actual truth is more interesting: Claude was the planning partner, TypeScript compiler, and rubber duck—but every design decision, every content choice, and every judgment call was mine. The site needed to embody that nuance.",
     technicalApproach:

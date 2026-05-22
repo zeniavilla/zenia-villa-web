@@ -3,10 +3,10 @@ import { LitElement, html, css } from 'lit';
 /**
  * <zv-timeline-entry> — A single entry in a career timeline.
  *
- * Demonstrates the web components <slot> API for composition.
+ * Demonstrates Lit's reactive property system and shadow DOM CSS encapsulation.
  * The connector dot and vertical line live in shadow DOM;
- * body content flows through a named slot into light DOM (fully
- * accessible, indexable, styleable from outside).
+ * body paragraphs are passed as a `paragraphs` property and rendered there too,
+ * keeping the collapse/expand animation fully self-contained.
  *
  * Attributes:
  *   date       — timeframe label, e.g. "2021 – Present"
@@ -14,8 +14,8 @@ import { LitElement, html, css } from 'lit';
  *   company    — company name
  *   is-current — boolean; makes the dot pulse with a CSS animation
  *
- * Slots:
- *   body — the description content
+ * Properties (set imperatively via ref):
+ *   paragraphs — string[] of body paragraphs to render
  */
 export class ZvTimelineEntry extends LitElement {
   static override properties = {
@@ -23,35 +23,49 @@ export class ZvTimelineEntry extends LitElement {
     title: { type: String },
     company: { type: String },
     isCurrent: { type: Boolean, attribute: 'is-current', reflect: true },
+    paragraphs: { type: Array },
     _open: { type: Boolean, state: true },
   };
 
-  date = '';
-  title = '';
-  company = '';
-  isCurrent = false;
-  _open = true;
+  // 'declare' prevents TypeScript from emitting class-field initializers that would
+  // shadow Lit's reactive prototype accessors (useDefineForClassFields=true bug).
+  declare date: string;
+  declare title: string;
+  declare company: string;
+  declare isCurrent: boolean;
+  declare paragraphs: string[];
+  declare _open: boolean;
+
+  constructor() {
+    super();
+    this.date = '';
+    this.title = '';
+    this.company = '';
+    this.isCurrent = false;
+    this.paragraphs = [];
+    this._open = true;
+  }
 
   static override styles = css`
     :host {
       display: block;
       position: relative;
-      padding-left: 2rem;
-      padding-bottom: 2.5rem;
+      /* Spacing between entries is handled by gap-10 on the React container.
+         The ::before line extends bottom:-2.5rem to bridge that gap. */
     }
 
-    /* Vertical connector line */
+    /* Vertical connector line — extends 2rem past the element bottom
+       to bridge the gap-8 (2rem) set on the React container */
     :host::before {
       content: '';
       position: absolute;
       left: 6px;
-      top: 14px;
-      bottom: 0;
+      top: 22px;
+      bottom: -2rem;
       width: 1px;
       background: var(--border, oklch(0.929 0.013 255.508));
     }
 
-    /* Hide the line on the last entry */
     :host(:last-child)::before {
       display: none;
     }
@@ -93,11 +107,8 @@ export class ZvTimelineEntry extends LitElement {
       gap: 1rem;
       cursor: pointer;
       user-select: none;
+      padding-left: 2.25rem;
       padding-bottom: 0.25rem;
-    }
-
-    .header:hover .title {
-      color: var(--foreground, oklch(0.129 0.042 264.695));
     }
 
     .header-left {
@@ -137,6 +148,7 @@ export class ZvTimelineEntry extends LitElement {
     /* Collapse / expand body via CSS grid trick */
     .body {
       display: grid;
+      padding-left: 2.25rem;
       transition: grid-template-rows 350ms ease, opacity 350ms ease;
     }
 
@@ -150,22 +162,25 @@ export class ZvTimelineEntry extends LitElement {
       opacity: 0;
     }
 
+    /* min-height: 0 is required for the 0fr → 1fr grid animation */
     .body-inner {
       overflow: hidden;
+      min-height: 0;
     }
 
-    /* Slotted content styles */
-    ::slotted([slot='body']) {
+    /* Body paragraph styles */
+    .body-para {
       display: block;
-      padding-top: 0.75rem;
       font-size: 0.9375rem;
       font-weight: 300;
       line-height: 1.75;
       color: var(--foreground, oklch(0.129 0.042 264.695));
+      margin: 0;
+      padding-top: 0.75rem;
     }
 
-    ::slotted(p + p) {
-      margin-top: 0.75rem;
+    .body-para + .body-para {
+      padding-top: 0.625rem;
     }
   `;
 
@@ -174,7 +189,7 @@ export class ZvTimelineEntry extends LitElement {
   }
 
   override render() {
-    const bodyId = `body-${this.title?.replace(/\s+/g, '-').toLowerCase() ?? 'entry'}`;
+    const bodyId = `body-${(this.title ?? 'entry').replace(/\s+/g, '-').toLowerCase()}`;
 
     return html`
       <div class="dot" aria-hidden="true"></div>
@@ -202,7 +217,7 @@ export class ZvTimelineEntry extends LitElement {
 
       <div id=${bodyId} class="body ${this._open ? 'open' : 'closed'}">
         <div class="body-inner">
-          <slot name="body"></slot>
+          ${this.paragraphs.map(p => html`<p class="body-para">${p}</p>`)}
         </div>
       </div>
     `;
