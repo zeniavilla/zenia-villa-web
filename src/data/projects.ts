@@ -98,6 +98,49 @@ export const PROJECTS: ProjectData = {
       "My biggest takeaway from this project was how crucial communication and scoping are in a multi-team environment. The code itself was fine, but my ability to stay in constant contact with the design and documentation teams was key. It also taught me a lesson in balancing features; it's important to challenge ideas if the amount of technical debt or effort they introduce far outweigh the immediate benefit. That focus kept the project clean and successful.",
     ],
   },
+  'ingest-pipeline': {
+    id: 'ingest-pipeline',
+    color: 'green',
+    category: 'work-eluvio',
+    featured: false,
+    title: 'Ingest Pipeline Optimization',
+    tagline: 'Cut blockchain transaction costs 65% by refactoring from fragmented writes to a single-token session model',
+    technologies: ['JavaScript', 'Node.js', 'Blockchain', 'Eluvio Content Fabric'],
+    year: '2025',
+    role: 'Software Engineer',
+    overview:
+      "At Eluvio, media ingest is the critical path: assets can't be watched until they're fully committed to the Content Fabric. The original implementation was optimized for simplicity, not for scale. Every sub-task in the ingest pipeline — adding metadata, indexing the file, registering the asset — requested its own write token and waited for the blockchain fabric to finalize before proceeding. At a few uploads a day, this was manageable. At customer scale, it was unsustainable.",
+    challenge:
+      "The architecture was too chatty. Each write had its own confirmation round, creating stop-and-go latency throughout the pipeline. More critically, since every write operation on the blockchain fabric carries a gas cost, running 4–5 separate transactions per ingest file was economically unsound as we scaled. A customer ingesting 1,000 media assets monthly was paying roughly $30,000 in pure transaction overhead — most of it avoidable. The old model: 4 separate transactions × 100,000 gas each = 400,000 gas per ingest.",
+    technicalApproach:
+      "I refactored the ingest logic to operate under a single write token session. Instead of opening and committing multiple small transactions, the system now groups all operations — metadata writes, file indexing, asset registration — into a single batched payload committed once at finalization. I built state management to keep the write token active and valid across different background tasks, and added a cleanup process to handle failed jobs correctly and prevent orphaned data on the fabric. The write token opens once, does all its work, and commits when everything is ready. The new model: 1 transaction × 130,000 gas (batching adds a small overhead) = 130,000 gas per ingest.",
+    reflection: [
+      "The numbers made the case clearly: consolidating from 4 transactions to 1 reduced per-ingest gas by ~270,000 units — a 65–70% reduction. At standard gas prices and ETH at $2,500, that dropped the per-upload cost from approximately $30 to $9.75. For a customer ingesting 1,000 assets per month, that's the difference between $30,000 and $10,000 in monthly fees — roughly $240,000 in annual savings from a single refactor.",
+      "This project reinforced that performance optimization at the infrastructure level has compounding effects. Faster finalization improved time-to-play for end users because the system no longer had to wait for multiple confirmation rounds. Reduced load on the network allowed the system to handle more concurrent uploads. The engineering effort was contained; the business impact was significant.",
+    ],
+  },
+  'live-stream-profiles': {
+    id: 'live-stream-profiles',
+    color: 'orange',
+    category: 'work-eluvio',
+    featured: true,
+    title: 'Live Stream Automation & Profile System',
+    tagline: 'Reduced live event setup time from 2+ hours to 10 minutes with a reusable 3-layer profile architecture',
+    technologies: ['JavaScript', 'Node.js', 'API Design', 'Eluvio Content Fabric', 'CLI Tools'],
+    year: '2026',
+    role: 'Senior Software Engineer',
+    overview:
+      "Large live events at Eluvio involve configuring dozens to hundreds of simultaneous streams — each requiring precise settings for A/V ladders, DRM types, TTLs, and reconnect timeouts. Before this project, every stream was configured manually from scratch. Setting up a major event with multiple live streams could take a single operator 2–3 hours of uninterrupted work, and a single misconfiguration could cause stream failure or a DRM security vulnerability.",
+    challenge:
+      "There was no source of truth for stream configurations. Without a reusable template system, consistency across 50+ concurrent streams was impossible to guarantee. Every setup was a bespoke, high-stakes manual process. Operators were spending hours on repetitive configuration work instead of focusing on running the event, and the risk of configuration drift increased with every deployment. The complexity made it nearly impossible to onboard non-engineers to stream management tasks.",
+    technicalApproach:
+      "I expanded the elv-client-js API surface to support a profile-based configuration system built around a 3-layer merge strategy: the stored profile template, stream-specific live state, and operator overrides are deep-merged in order, with each layer winning over the previous where it has a value. Profiles are stored as content-addressed metadata on a 'Site Object' — every change is versioned and immutable, giving live broadcast environments a built-in audit trail. I built lifecycle management that automatically opens write tokens on both stream and site objects when a profile is applied, performs the configuration merge, and stamps a profile_last_updated tag for tracking. A concurrency-limited worker pool handles bulk updates (10–15 concurrent writes), and a monitoring UI shows profile sync status across all streams with visual drift detection based on configuration hash comparison.",
+    reflection: [
+      "The 3-layer merge was the key architectural decision. A naive 'copy template' approach would have created configuration drift immediately — the moment a profile changed, all streams built from it would be stale. The merge relationship means profile updates propagate automatically on the next 'Apply' call while still allowing local exceptions (like a unique reconnect timeout for a specific encoder at a specific venue). It separates global standards from local exceptions, which is exactly what live broadcast operations need.",
+      "The result was a 92% reduction in bulk event setup time — from 180 minutes to 10 minutes — and near-zero configuration errors. Operators moved from debugging JSON in a terminal during a live event to monitoring a dashboard with color-coded sync indicators. That shift in operational experience was the real win.",
+      "Building for broadcast requires a 'measure twice, cut once' mindset. I added validation schemas for dry-run merge checks before any write token is finalized, an explicit --confirm flag for bulk CLI operations, and the configuration drift detection system. When you're managing 100 streams simultaneously during a live event, the cost of a silent error is too high to skip the guardrails.",
+    ],
+  },
   'zenia-villa-web': {
     id: 'zenia-villa-web',
     color: 'indigo',
