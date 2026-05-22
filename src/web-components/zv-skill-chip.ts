@@ -101,7 +101,6 @@ export class ZvSkillChip extends LitElement {
       <span
         class="chip"
         part="chip"
-        role="listitem"
         @click=${this._handleClick}
       >
         ${this.label}

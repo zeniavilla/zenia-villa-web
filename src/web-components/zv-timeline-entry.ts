@@ -174,6 +174,8 @@ export class ZvTimelineEntry extends LitElement {
   }
 
   override render() {
+    const bodyId = `body-${this.title?.replace(/\s+/g, '-').toLowerCase() ?? 'entry'}`;
+
     return html`
       <div class="dot" aria-hidden="true"></div>
 
@@ -181,6 +183,7 @@ export class ZvTimelineEntry extends LitElement {
         class="header"
         role="button"
         aria-expanded=${this._open ? 'true' : 'false'}
+        aria-controls=${bodyId}
         tabindex="0"
         @click=${this._toggle}
         @keydown=${(e: KeyboardEvent) => {
@@ -197,7 +200,7 @@ export class ZvTimelineEntry extends LitElement {
         <span class="date">${this.date}</span>
       </div>
 
-      <div class="body ${this._open ? 'open' : 'closed'}">
+      <div id=${bodyId} class="body ${this._open ? 'open' : 'closed'}">
         <div class="body-inner">
           <slot name="body"></slot>
         </div>

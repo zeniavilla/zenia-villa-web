@@ -55,7 +55,7 @@ function Experience() {
         <h2 className="text-2xl md:text-3xl lg:text-4xl font-light text-foreground mb-10 md:mb-12">
           Experience
         </h2>
-        <div role="list">
+        <div>
           {EXPERIENCE_DATA.map(item => (
             <ZvTimelineEntry
               key={item.id}
@@ -94,7 +94,7 @@ function Skills() {
                 <h3 className="font-mono text-xs uppercase tracking-widest text-muted-foreground mb-4">
                   {group.label}
                 </h3>
-                <div className="flex flex-wrap gap-2" role="list">
+                <div className="flex flex-wrap gap-2">
                   {groupSkills.map(skill => (
                     <ZvSkillChip
                       key={skill.label}

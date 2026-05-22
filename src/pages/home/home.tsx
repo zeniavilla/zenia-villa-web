@@ -88,7 +88,7 @@ export default function Home() {
                 )}
               </div>
               <div className="flex items-center gap-3 shrink-0">
-                <span className="hidden md:block text-sm text-muted-foreground font-light">
+                <span className="hidden md:block text-sm text-muted-foreground font-light max-w-sm truncate">
                   {project.tagline}
                 </span>
                 <ArrowUpRight

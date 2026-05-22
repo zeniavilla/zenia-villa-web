@@ -23,6 +23,7 @@ export class ZvTerminal extends LitElement {
     showChrome: { type: Boolean, attribute: 'show-chrome' },
     // Internal reactive state
     _displayText: { type: String, state: true },
+    _announceText: { type: String, state: true },
   };
 
   speed = 65;
@@ -32,6 +33,8 @@ export class ZvTerminal extends LitElement {
   strings: string[] = [];
 
   _displayText = '';
+  /** Updated only when a full phrase finishes typing — announced to screen readers. */
+  _announceText = '';
 
   private _currentStringIndex = 0;
   private _currentCharIndex = 0;
@@ -43,7 +46,8 @@ export class ZvTerminal extends LitElement {
 
   static override styles = css`
     :host {
-      display: inline;
+      display: inline-block;
+      position: relative;
       font-family: inherit;
     }
 
@@ -72,6 +76,19 @@ export class ZvTerminal extends LitElement {
     .dot-red    { background: #ff5f57; }
     .dot-yellow { background: #febc2e; }
     .dot-green  { background: #28c840; }
+
+    /* Visually hidden — accessible to screen readers only */
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border-width: 0;
+    }
 
     .terminal-body {
       padding: 16px 20px;
@@ -142,7 +159,9 @@ export class ZvTerminal extends LitElement {
       this._currentCharIndex++;
 
       if (this._currentCharIndex >= currentString.length) {
-        // Finished typing — pause, then start deleting
+        // Finished typing — announce the full phrase to screen readers
+        this._announceText = currentString;
+        // Pause, then start deleting
         clearInterval(this._typeInterval);
         this._pauseTimeout = setTimeout(() => {
           this._isDeleting = true;
@@ -167,12 +186,14 @@ export class ZvTerminal extends LitElement {
 
   override render() {
     const content = html`
-      <span class="text-line">
+      <!-- Visual animation: hidden from assistive technologies -->
+      <span class="text-line" aria-hidden="true">
         ${this.prefix ? html`<span class="prefix">${this.prefix}</span>` : ''}${this._displayText}<span
           class="cursor"
-          aria-hidden="true"
         ></span>
       </span>
+      <!-- Announced to screen readers only when a full phrase finishes typing -->
+      <span class="sr-only" role="status" aria-live="polite">${this._announceText}</span>
     `;
 
     if (this.showChrome) {
