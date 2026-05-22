@@ -1,4 +1,5 @@
 /// <reference types="vite/client" />
+/// <reference path="./web-components/custom-elements.d.ts" />
 
 declare module '*.webp' {
   const src: string;
