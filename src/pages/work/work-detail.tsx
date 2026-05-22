@@ -1,5 +1,5 @@
 import { PROJECTS } from '@/data/projects.ts';
-import { NavLink, useParams } from 'react-router';
+import { useParams, useNavigate } from 'react-router';
 import { ArrowLeft, Calendar, Clock, ExternalLink, Github } from 'lucide-react';
 import { useScrollFade } from '@/hooks/useScrollFade.ts';
 import { ZvSkillChip } from '@/web-components/react/ZvSkillChip';
@@ -7,16 +7,19 @@ import { Badge } from '@/components/ui/badge';
 
 export default function WorkDetail() {
   const { id } = useParams<{ id: string }>();
+  const navigate = useNavigate();
   const heroFade = useScrollFade(0.1);
   const contentFade = useScrollFade(0.05);
+
+  const goBack = () => navigate(-1);
 
   if (!id || !PROJECTS[id]) {
     return (
       <div className="max-w-4xl mx-auto px-8 md:px-10 lg:px-12 py-16 text-center">
         <p className="text-muted-foreground font-light">Project not found.</p>
-        <NavLink to="/work" className="text-sm text-muted-foreground hover:text-foreground mt-4 inline-block">
+        <button onClick={goBack} className="text-sm text-muted-foreground hover:text-foreground mt-4 inline-block">
           ← Back to Work
-        </NavLink>
+        </button>
       </div>
     );
   }
@@ -31,13 +34,13 @@ export default function WorkDetail() {
 
   return (
     <div className="max-w-4xl mx-auto px-8 md:px-10 lg:px-12 py-6 md:py-8">
-      <NavLink
+      <button
+        onClick={goBack}
         className="flex flex-row items-center gap-2 text-muted-foreground hover:text-foreground font-light text-sm md:text-base hover:-translate-x-2 transition-transform duration-300 ease-in-out w-fit"
-        to="/work"
       >
         <ArrowLeft size={16} />
         <span>Back to Work</span>
-      </NavLink>
+      </button>
 
       {/* Hero */}
       <section

@@ -107,7 +107,7 @@ export const PROJECTS: ProjectData = {
     tagline: 'Cut blockchain transaction costs 65% by refactoring from fragmented writes to a single-token session model',
     technologies: ['JavaScript', 'Node.js', 'Blockchain', 'Eluvio Content Fabric'],
     year: '2025',
-    role: 'Software Engineer',
+    role: 'Lead Frontend Engineer',
     overview:
       "At Eluvio, media ingest is the critical path: assets can't be watched until they're fully committed to the Content Fabric. The original implementation was optimized for simplicity, not for scale. Every sub-task in the ingest pipeline — adding metadata, indexing the file, registering the asset — requested its own write token and waited for the blockchain fabric to finalize before proceeding. At a few uploads a day, this was manageable. At customer scale, it was unsustainable.",
     challenge:
@@ -128,7 +128,7 @@ export const PROJECTS: ProjectData = {
     tagline: 'Reduced live event setup time from 2+ hours to 10 minutes with a reusable 3-layer profile architecture',
     technologies: ['JavaScript', 'Node.js', 'API Design', 'Eluvio Content Fabric', 'CLI Tools'],
     year: '2026',
-    role: 'Senior Software Engineer',
+    role: 'Lead Frontend Engineer',
     overview:
       "Large live events at Eluvio involve configuring dozens to hundreds of simultaneous streams — each requiring precise settings for A/V ladders, DRM types, TTLs, and reconnect timeouts. Before this project, every stream was configured manually from scratch. Setting up a major event with multiple live streams could take a single operator 2–3 hours of uninterrupted work, and a single misconfiguration could cause stream failure or a DRM security vulnerability.",
     challenge:
