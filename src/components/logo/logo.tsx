@@ -9,7 +9,7 @@ function Logo({ className = "" }: LogoProps) {
     <span
       className={`font-semibold tracking-[0.22em] text-2xl uppercase ${className}`}
     >
-      ZENIA
+      ZENIA VILLA
     </span>
   );
 }

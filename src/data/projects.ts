@@ -156,14 +156,13 @@ export const PROJECTS: ProjectData = {
     role: 'Engineer & Designer',
     timeline: 'Ongoing',
     overview:
-      "This site is a complete ground-up rebuild of my personal portfolio. The goal was to move beyond a static resume-on-a-page and build something that reflects how I actually work as an engineer in 2026—using the best tools available, thinking carefully about architecture, and being transparent about process. The stack is React + TypeScript + Tailwind CSS v4, with three hand-built Lit web components showcasing my familiarity with the web platform beyond any single framework.",
+      "This is my personal portfolio — an ongoing project I keep coming back to. This latest round added new projects, a few hand-built Lit web components, and a tightened visual design. The stack is React + TypeScript + Tailwind CSS v4, with three hand-built Lit web components thrown in to prove I know the web platform, not just React.",
     challenge:
-      "The interesting design challenge was figuring out how to honestly represent AI-assisted development without it feeling like a crutch or a footnote. There's a real temptation to either over-claim or under-claim. The actual truth is more interesting: Claude was the planning partner, TypeScript compiler, and rubber duck—but every design decision, every content choice, and every judgment call was mine. The site needed to embody that nuance.",
+      "The tricky part was figuring out how to honestly represent AI-assisted development without it feeling like a crutch or an afterthought. There's a real temptation to either over-claim or under-claim. The actual truth is more interesting: Claude was the planning partner, TypeScript compiler, and rubber duck—but every design decision, every content choice, and every judgment call was mine. The site needed to reflect that.",
     technicalApproach:
-      "The architecture was planned collaboratively in a design session with Claude before writing a single line of code. The three Lit web components—a skill chip, a terminal typer, and a timeline entry—were chosen because they're the cleanest demonstration of why web components exist: self-contained, shadow-DOM-encapsulated, and framework-agnostic. They use CSS custom properties to read theme tokens from the host document, so dark/light mode just works. React wraps each one for clean JSX usage and event bridging.",
+      "The three Lit web components—a skill chip, a terminal typer, and a timeline entry—were chosen because they're the cleanest demonstration of why web components exist: self-contained, shadow-DOM-encapsulated, and framework-agnostic. They use CSS custom properties to read theme tokens from the host document, so dark/light mode just works. React wraps each one for clean JSX usage and event bridging.",
     reflection: [
-      "The meta-level insight from building this is that AI-assisted development is genuinely different from the hype on both sides. It didn't write the site; it helped me think through the site faster and with more rigor. The planning session that produced the architecture document is evidence of that—I came in with a vague idea and left with a specific, defensible plan.",
-      "The 'vibe coded' framing, while catchy, sells the process short. A better frame: I used Claude the way a senior engineer uses a tech lead—as a sounding board who knows a lot, can generate options quickly, but ultimately defers to your judgment on what matters.",
+      "Honestly, AI-assisted development is genuinely different from the hype on both sides. It didn't write the site; it helped me think through what to add faster and more carefully. I came in with a vague idea and left with a clear, specific plan."
     ],
   },
 };

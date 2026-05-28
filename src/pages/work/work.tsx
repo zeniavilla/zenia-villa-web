@@ -13,7 +13,7 @@ const FILTER_OPTIONS: { label: string; value: FilterOption }[] = [
   { label: 'IBM', value: 'work-ibm' },
   { label: 'Eluvio', value: 'work-eluvio' },
   { label: 'Personal', value: 'personal' },
-  { label: 'Meta', value: 'meta' },
+  { label: 'Self', value: 'meta' },
 ];
 
 interface ProjectCardProps {

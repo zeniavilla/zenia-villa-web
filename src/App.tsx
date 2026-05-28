@@ -37,7 +37,6 @@ const Home = lazy(() => import('@/pages/home/home.tsx'));
 const About = lazy(() => import('@/pages/about/about.tsx'));
 const Work = lazy(() => import('@/pages/work/work.tsx'));
 const WorkDetail = lazy(() => import('@/pages/work/work-detail.tsx'));
-const BuiltWithAI = lazy(() => import('@/pages/built-with-ai/built-with-ai.tsx'));
 
 const App = () => {
   return (
@@ -54,7 +53,6 @@ const App = () => {
                 <Route path="/about" element={<About />} />
                 <Route path="/work" element={<Work />} />
                 <Route path="/work/:id" element={<WorkDetail />} />
-                <Route path="/built-with-ai" element={<BuiltWithAI />} />
               </Routes>
             </Suspense>
           </main>
